@@ -1,950 +1,1021 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mobile Market Q3 2026 Executive Summary</title>
-  <style>
-    :root {
-      --bg: #f6f7f9;
-      --card: #ffffff;
-      --ink: #172033;
-      --muted: #647086;
-      --line: #d9dee8;
-      --soft-line: #edf0f5;
-      --blue: #1f5eff;
-      --blue-soft: #e8efff;
-      --green: #1f8a4c;
-      --green-soft: #e7f6ed;
-      --amber: #a05a00;
-      --amber-soft: #fff1d6;
-      --red: #b42318;
-      --red-soft: #fee4e2;
-      --purple: #6a3fb5;
-      --purple-soft: #efe8ff;
-      --shadow: 0 8px 24px rgba(23, 32, 51, 0.08);
-      --radius: 16px;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      line-height: 1.45;
-    }
-
-    .page {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 18px;
-    }
-
-    h1, h2, h3, p { margin-top: 0; }
-
-    h1 {
-      font-size: 28px;
-      line-height: 1.15;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 760px;
-      margin-bottom: 0;
-    }
-
-    .meta {
-      text-align: right;
-      font-size: 12px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    .mode-tabs {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
-      margin: 18px 0;
-      background: #e8ebf1;
-      border: 1px solid var(--line);
-      padding: 6px;
-      border-radius: 14px;
-    }
-
-    .tab-button {
-      appearance: none;
-      border: 0;
-      border-radius: 10px;
-      background: transparent;
-      color: var(--muted);
-      padding: 11px 12px;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .tab-button.active {
-      background: var(--card);
-      color: var(--ink);
-      box-shadow: 0 2px 8px rgba(23, 32, 51, 0.08);
-    }
-
-    .view { display: none; }
-    .view.active { display: block; }
-
-    .grid { display: grid; gap: 14px; }
-    .grid.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
-    }
-
-    .card.tight { padding: 14px; }
-
-    .section-title {
-      font-size: 16px;
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
-    }
-
-    .metric-label {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 6px;
-    }
-
-    .metric-value {
-      font-size: 25px;
-      line-height: 1.1;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
-
-    .metric-note {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 8px;
-    }
-
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 9px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      border: 1px solid transparent;
-    }
-
-    .badge.green { color: var(--green); background: var(--green-soft); border-color: #b7e4c7; }
-    .badge.amber { color: var(--amber); background: var(--amber-soft); border-color: #ffd796; }
-    .badge.red { color: var(--red); background: var(--red-soft); border-color: #fecdca; }
-    .badge.blue { color: #214fb8; background: var(--blue-soft); border-color: #c6d7ff; }
-    .badge.purple { color: var(--purple); background: var(--purple-soft); border-color: #d9c9ff; }
-    .badge.gray { color: #475467; background: #f2f4f7; border-color: #d0d5dd; }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 14px;
-      align-items: stretch;
-    }
-
-    .release-story {
-      font-size: 15px;
-      margin-bottom: 14px;
-    }
-
-    .release-story strong { font-weight: 800; }
-
-    .readout-box {
-      border-radius: 14px;
-      background: var(--amber-soft);
-      border: 1px solid #ffd796;
-      padding: 14px;
-    }
-
-    .readout-title {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .readout-title h2 {
-      font-size: 17px;
-      margin: 0;
-    }
-
-    .readout-body {
-      color: #4a2c00;
-      font-size: 14px;
-      margin: 0;
-    }
-
-    .bar-wrap { margin-top: 12px; }
-
-    .bar-line {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 5px;
-    }
-
-    .bar-bg {
-      height: 12px;
-      border-radius: 999px;
-      background: #e8ebf1;
-      overflow: hidden;
-      border: 1px solid #dce1ea;
-    }
-
-    .bar-fill {
-      height: 100%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #7aa7ff, #1f5eff);
-    }
-
-    .bar-fill.amber { background: linear-gradient(90deg, #ffd796, #f79009); }
-    .bar-fill.green { background: linear-gradient(90deg, #85e0a3, #1f8a4c); }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-
-    th {
-      text-align: left;
-      color: var(--muted);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 9px 8px;
-      border-bottom: 1px solid var(--line);
-      white-space: nowrap;
-    }
-
-    td {
-      padding: 10px 8px;
-      border-bottom: 1px solid var(--soft-line);
-      vertical-align: top;
-    }
-
-    tr:last-child td { border-bottom: none; }
-
-    .num { text-align: right; font-variant-numeric: tabular-nums; }
-    .muted { color: var(--muted); }
-    .nowrap { white-space: nowrap; }
-
-    .decision-card {
-      border-left: 4px solid var(--amber);
-      background: #fffbf2;
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 10px;
-      border-top: 1px solid #ffe4ad;
-      border-right: 1px solid #ffe4ad;
-      border-bottom: 1px solid #ffe4ad;
-    }
-
-    .decision-card h3 {
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
-
-    .decision-meta {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: 10px;
-      font-size: 12px;
-    }
-
-    .mini-label {
-      color: var(--muted);
-      display: block;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-
-    .signal-row {
-      display: grid;
-      grid-template-columns: 92px 1fr auto;
-      gap: 10px;
-      align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--soft-line);
-      font-size: 13px;
-    }
-
-    .signal-row:last-child { border-bottom: none; }
-
-    .footer-note {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 12px;
-    }
-
-    .source-ledger {
-      background: #fbfcfe;
-      border: 1px dashed #b8c0cc;
-      border-radius: 14px;
-      padding: 14px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .source-ledger-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .ledger-item {
-      background: #ffffff;
-      border: 1px solid var(--soft-line);
-      border-radius: 10px;
-      padding: 10px;
-    }
-
-    .ledger-item strong {
-      display: block;
-      color: var(--ink);
-      margin-top: 2px;
-    }
-
-    .phase-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 10px;
-    }
-
-    .iframe-note {
-      margin-top: 16px;
-      background: #eef4ff;
-      border: 1px solid #c6d7ff;
-      border-radius: 14px;
-      padding: 12px;
-      font-size: 12px;
-      color: #214fb8;
-    }
-
-    .clickable-card,
-    .clickable-row,
-    .clickable-badge,
-    .clickable-signal,
-    .clickable-decision {
-      cursor: pointer;
-    }
-
-    .clickable-card,
-    .clickable-row,
-    .clickable-signal,
-    .clickable-decision,
-    .clickable-badge {
-      transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease, background 150ms ease;
-    }
-
-    .clickable-card:hover,
-    .clickable-card:focus,
-    .clickable-row:hover,
-    .clickable-signal:hover,
-    .clickable-decision:hover {
-      border-color: var(--blue);
-      box-shadow: 0 10px 28px rgba(23, 32, 51, 0.12);
-      transform: translateY(-1px);
-      outline: none;
-    }
-
-    .clickable-badge:hover {
-      filter: brightness(0.98);
-      box-shadow: 0 2px 8px rgba(23, 32, 51, 0.12);
-    }
-
-    .clickable-row:hover td {
-      background: #fbfcff;
-    }
-
-    .click-hint {
-      color: #214fb8;
-      font-weight: 700;
-    }
-
-    .detail-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(23, 32, 51, 0.28);
-      display: none;
-      z-index: 20;
-    }
-
-    .detail-backdrop.active { display: block; }
-
-    .detail-drawer {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: min(860px, 94vw);
-      height: 100vh;
-      background: var(--card);
-      border-left: 1px solid var(--line);
-      box-shadow: -12px 0 32px rgba(23, 32, 51, 0.18);
-      padding: 20px;
-      overflow: auto;
-      transform: translateX(100%);
-      transition: transform 160ms ease;
-      z-index: 21;
-    }
-
-    .detail-drawer.active { transform: translateX(0); }
-
-    .drawer-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 14px;
-    }
-
-    .drawer-title {
-      margin: 0 0 6px;
-      font-size: 22px;
-      letter-spacing: -0.02em;
-    }
-
-    .drawer-subtitle {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .drawer-close {
-      border: 1px solid var(--line);
-      background: #ffffff;
-      color: var(--ink);
-      border-radius: 10px;
-      padding: 8px 10px;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .drawer-meta {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .drawer-meta-item {
-      background: #fbfcfe;
-      border: 1px solid var(--soft-line);
-      border-radius: 12px;
-      padding: 10px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .drawer-meta-item strong {
-      display: block;
-      color: var(--ink);
-      margin-top: 3px;
-    }
-
-    .drawer-table-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-    }
-
-    .drawer-table-wrap table {
-      min-width: 760px;
-      background: white;
-    }
-
-    .jira-link {
-      color: var(--blue);
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    .jira-link:hover { text-decoration: underline; }
-
-    .validation-ok { color: var(--green); font-weight: 800; }
-    .validation-warning { color: var(--red); font-weight: 800; }
-
-    @media (max-width: 920px) {
-      .hero, .grid.cols-4, .grid.cols-3, .grid.cols-2, .source-ledger-grid, .drawer-meta { grid-template-columns: 1fr; }
-      .topbar { display: block; }
-      .meta { text-align: left; margin-top: 12px; }
-      .decision-meta { grid-template-columns: 1fr; }
-      .signal-row { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-  <main class="page">
-    <header class="topbar">
-      <div>
-        <h1>Mobile Market Q3 Executive Summary</h1>
-        <p class="subtitle">Approved baseline and source-backed delivery signals for Mobile Market ART. Click any count, tag, or signal to see the supporting work items, evidence status, and Jira links.</p>
-      </div>
-      <div class="meta">
-        <div><strong>Baseline status:</strong> Approved / validated</div>
-        <div><strong>Approval date:</strong> May 31, 2026</div>
-        <div><strong>Parent finalization:</strong> iframe pending</div>
-      </div>
-    </header>
-
-    <nav class="mode-tabs" aria-label="Executive summary mode selector">
-      <button class="tab-button active" data-tab="baseline">Baseline Report</button>
-      <button class="tab-button" data-tab="signals">Signal Tracker</button>
-    </nav>
-
-    <section id="baseline" class="view active">
-      <div class="phase-label">Baseline view · approved plan</div>
-      <section class="hero">
-        <article class="card">
-          <h2 class="section-title">1. Executive Readout</h2>
-          <p class="release-story"><strong>Mobile Market Q3 is approved as a 16-Epic baseline</strong> across two release candidates. The plan is within Q3 total capacity, but <strong>July QA is over by 28 hours</strong>, so release-level sequencing is the main constraint.</p>
-          <div class="badge-row">
-            <span class="badge green">Approved / validated</span>
-            <span class="badge amber clickable-badge" data-detail-key="capacity">July QA -28h</span>
-            <span class="badge blue clickable-badge" data-detail-key="approvedEpics">16 committed epics</span>
-            <span class="badge gray clickable-badge" data-detail-key="sourceGaps">Documented source gaps</span>
-          </div>
-        </article>
-        <aside class="readout-box">
-          <div class="readout-title"><h2>Leadership readout</h2><span class="badge amber">Watch</span></div>
-          <p class="readout-body">The baseline is approved. The steering focus is not total Q3 capacity; it is July QA pressure, Coke Swipe integration assumptions, GS1 Castles dependency, and JWO API path alignment.</p>
-        </aside>
-      </section>
-
-      <section class="grid cols-4" style="margin-top:14px;">
-        <article class="card tight clickable-card" tabindex="0" data-detail-key="approvedEpics"><div class="metric-label">Committed scope</div><div class="metric-value">16</div><div class="metric-note"><span class="click-hint">Click for Jira-linked epics</span></div></article>
-        <article class="card tight clickable-card" tabindex="0" data-detail-key="notIncluded"><div class="metric-label">Not included</div><div class="metric-value">4</div><div class="metric-note">Empty fixVersion at baseline</div></article>
-        <article class="card tight clickable-card" tabindex="0" data-detail-key="reviewNeeded"><div class="metric-label">Review needed</div><div class="metric-value">0</div><div class="metric-note">No non-target fixVersions</div></article>
-        <article class="card tight clickable-card" tabindex="0" data-detail-key="standalone"><div class="metric-label">Standalone epic</div><div class="metric-value">1</div><div class="metric-note">Target fixVersion, no parent</div></article>
-      </section>
-
-      <section class="grid cols-2" style="margin-top:14px;">
-        <article class="card">
-          <h2 class="section-title">2. Capacity vs ROM</h2>
-          <table>
-            <thead><tr><th>Release</th><th class="num">Dev Var</th><th class="num">QA Var</th><th>Readout</th></tr></thead>
-            <tbody>
-              <tr class="clickable-row" data-detail-key="capacity"><td>MMv26.04.0 · July</td><td class="num">+13h</td><td class="num"><span class="validation-warning">-28h</span></td><td><span class="click-hint">QA constraint</span></td></tr>
-              <tr class="clickable-row" data-detail-key="capacity"><td>MMv26.05.0 · August</td><td class="num">+10h</td><td class="num"><span class="validation-ok">+46h</span></td><td>Within capacity</td></tr>
-              <tr class="clickable-row" data-detail-key="capacity"><td><strong>Q3 total</strong></td><td class="num"><span class="validation-ok">+23h</span></td><td class="num"><span class="validation-ok">+18h</span></td><td>Total capacity positive</td></tr>
-            </tbody>
-          </table>
-          <div class="bar-wrap">
-            <div class="bar-line"><span>July QA load</span><strong>535 ROM / 507 capacity</strong></div>
-            <div class="bar-bg"><div class="bar-fill amber" style="width:100%;"></div></div>
-          </div>
-        </article>
-        <article class="card">
-          <h2 class="section-title">3. Scope Guardrails</h2>
-          <table>
-            <thead><tr><th>Rule</th><th>Handling</th></tr></thead>
-            <tbody>
-              <tr><td>Target fixVersion</td><td>Committed baseline scope</td></tr>
-              <tr><td>Empty fixVersion</td><td>Not Included</td></tr>
-              <tr><td>Non-target fixVersion</td><td>Review Needed</td></tr>
-              <tr><td>Standalone Epic</td><td>Visible for PM review</td></tr>
-              <tr><td>No evidence</td><td>No RAID / DA proposal</td></tr>
-            </tbody>
-          </table>
-        </article>
-      </section>
-
-      <section class="grid cols-2" style="margin-top:14px;">
-        <article class="card">
-          <h2 class="section-title">4. Initiative Coverage</h2>
-          <table>
-            <thead><tr><th>Initiative</th><th>Coverage</th><th>RAID / DA</th></tr></thead>
-            <tbody>
-              <tr class="clickable-row" data-detail-key="initiativePRM508"><td>PRM-508 · JWO / PicoAccess</td><td><span class="badge green">Strong</span></td><td>Ready</td></tr>
-              <tr class="clickable-row" data-detail-key="initiativePRM313"><td>PRM-313 · Coke Swipe</td><td><span class="badge green">Strong</span></td><td>Ready</td></tr>
-              <tr class="clickable-row" data-detail-key="initiativePRM160"><td>PRM-160 · GS1</td><td><span class="badge green">Strong</span></td><td>Ready</td></tr>
-              <tr class="clickable-row" data-detail-key="sourceGaps"><td>Other committed initiatives</td><td><span class="badge amber">Weak / gap</span></td><td>No entry without evidence</td></tr>
-            </tbody>
-          </table>
-        </article>
-        <article class="card">
-          <h2 class="section-title">5. Source Posture</h2>
-          <table>
-            <thead><tr><th>Source type</th><th>Status</th><th>Use</th></tr></thead>
-            <tbody>
-              <tr class="clickable-row" data-detail-key="sources"><td>Jira comments / fields</td><td><span class="badge green">Strong</span></td><td>Primary evidence</td></tr>
-              <tr class="clickable-row" data-detail-key="sources"><td>Confluence PRD</td><td><span class="badge green">Strong</span></td><td>JWO boundary</td></tr>
-              <tr class="clickable-row" data-detail-key="sources"><td>Outlook + PM pasted evidence</td><td><span class="badge green">Strong</span></td><td>Roadmap notes</td></tr>
-              <tr class="clickable-row" data-detail-key="sourceGaps"><td>Teams / Loop / recordings</td><td><span class="badge amber">Unreadable</span></td><td>Not promoted</td></tr>
-            </tbody>
-          </table>
-        </article>
-      </section>
-    </section>
-
-    <section id="signals" class="view">
-      <div class="phase-label">Signal view · accepted current-state RAID / DA</div>
-      <section class="hero">
-        <article class="card">
-          <h2 class="section-title">1. Current-State Delivery Story</h2>
-          <p class="release-story">The accepted signal set is concentrated in <strong>JWO / PicoAccess</strong>, <strong>Coke Swipe</strong>, and <strong>GS1</strong>. The strongest signals come from direct Jira comments, the JWO PRD, and the 5/28 Technology Roadmap notes.</p>
-          <div class="badge-row">
-            <span class="badge red clickable-badge" data-detail-key="risks">3 risks</span>
-            <span class="badge blue clickable-badge" data-detail-key="dependencies">6 dependencies</span>
-            <span class="badge purple clickable-badge" data-detail-key="decisions">4 decisions</span>
-            <span class="badge amber clickable-badge" data-detail-key="actions">5 actions</span>
-          </div>
-        </article>
-        <aside class="readout-box">
-          <div class="readout-title"><h2>Decision posture</h2><span class="badge blue">Source-backed</span></div>
-          <p class="readout-body">No RAID / DA entry was created for weak-coverage initiatives. That keeps the report honest: it shows where evidence exists and where the PM accepted gaps.</p>
-        </aside>
-      </section>
-
-      <section class="grid cols-4" style="margin-top:14px;">
-        <article class="card tight clickable-card" tabindex="0" data-detail-key="risks"><div class="metric-label">Risks</div><div class="metric-value">3</div><div class="metric-note"><span class="click-hint">Click for evidence</span></div></article>
-        <article class="card tight clickable-card" tabindex="0" data-detail-key="dependencies"><div class="metric-label">Dependencies</div><div class="metric-value">6</div><div class="metric-note"><span class="click-hint">Click for owners/source</span></div></article>
-        <article class="card tight clickable-card" tabindex="0" data-detail-key="decisions"><div class="metric-label">Decisions</div><div class="metric-value">4</div><div class="metric-note"><span class="click-hint">Click for boundary</span></div></article>
-        <article class="card tight clickable-card" tabindex="0" data-detail-key="actions"><div class="metric-label">Actions</div><div class="metric-value">5</div><div class="metric-note"><span class="click-hint">Click for follow-up</span></div></article>
-      </section>
-
-      <section class="grid cols-2" style="margin-top:14px;">
-        <article class="card">
-          <h2 class="section-title">2. Top Signals</h2>
-          <div class="signal-row clickable-signal" data-detail-key="initiativePRM508"><span class="badge red">Risk</span><span>JWO gate hardware / API interface unknowns created ROM uncertainty.</span><strong class="nowrap">PRM-508</strong></div>
-          <div class="signal-row clickable-signal" data-detail-key="initiativePRM313"><span class="badge blue">Dependency</span><span>Coke Swipe August target is assumption-based pending vendor discovery.</span><strong class="nowrap">PRM-313</strong></div>
-          <div class="signal-row clickable-signal" data-detail-key="initiativePRM160"><span class="badge blue">Dependency</span><span>GS1 depends on Castles firmware/library details and Kiosk pre-validation timing.</span><strong class="nowrap">PRM-160</strong></div>
-          <div class="signal-row clickable-signal" data-detail-key="sourceGaps"><span class="badge gray">Gap</span><span>Weak-coverage initiatives were reviewed but not promoted into RAID / DA.</span><strong class="nowrap">PM accepted</strong></div>
-        </article>
-        <article class="card">
-          <h2 class="section-title">3. Parent Finalization Gate</h2>
-          <p><strong>Parent date stamp remains blocked.</strong></p>
-          <p class="muted">Host this HTML artifact, get an iframe-ready link, embed it in Confluence, and confirm it renders. Only then update the parent Last updated date.</p>
-          <div class="badge-row">
-            <span class="badge green">Child source approved</span>
-            <span class="badge amber">Hosting pending</span>
-            <span class="badge amber">Iframe pending</span>
-            <span class="badge amber">Parent date blocked</span>
-          </div>
-        </article>
-      </section>
-
-      <section class="card" style="margin-top:14px;">
-        <h2 class="section-title">4. Source Ledger</h2>
-        <div class="source-ledger">
-          This dashboard is a static, dependency-free HTML artifact generated from the validated child source page. The interactive drawer uses embedded data records. The next skill should generate those records from the source ledger and current Jira refresh.
-          <div class="source-ledger-grid">
-            <div class="ledger-item">Child page status<strong>Approved / validated</strong></div>
-            <div class="ledger-item">Committed epics<strong>16</strong></div>
-            <div class="ledger-item">Accepted RAID / DA<strong>19 entries</strong></div>
-            <div class="ledger-item">Parent status<strong>Iframe pending</strong></div>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <div class="iframe-note">Iframe note: this prototype is a static, dependency-free HTML page. It uses embedded JavaScript for tabs and drawers. If Confluence iframe policy blocks script execution, use the same layout as a static one-tab page or publish separate baseline and signal pages.</div>
-  </main>
-
-  <div class="detail-backdrop" id="detailBackdrop"></div>
-  <aside class="detail-drawer" id="detailDrawer" aria-hidden="true" aria-labelledby="drawerTitle" role="dialog">
-    <div class="drawer-header">
-      <div>
-        <h2 class="drawer-title" id="drawerTitle">Detail</h2>
-        <p class="drawer-subtitle" id="drawerSubtitle">Backing records for the selected rollup.</p>
-      </div>
-      <button class="drawer-close" id="drawerClose" type="button">Close</button>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Release Train Readiness Dashboard</title><style>
+:root{--bg:#f7f8fb;--panel:#fff;--ink:#152033;--muted:#607083;--line:#d9e2ec;--blue:#2563eb;--amber:#d97706;--purple:#7c3aed;--slate:#64748b;--green:#16a34a;--red:#dc2626}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:#0f172a;color:#fff;padding:24px 30px} header h1{margin:0 0 6px;font-size:24px} header p{margin:0;color:#cbd5e1;max-width:1140px;line-height:1.4}
+main{padding:22px 30px 44px}.card,.panel{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:18px}.metric{padding:14px 15px;cursor:pointer;transition:.12s ease}.metric:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(15,23,42,.10)}.metric.active{outline:2px solid var(--blue);background:#eff6ff}.metric .n{font-size:26px;font-weight:800}.metric .l{font-size:12px;color:var(--muted)}.metric .s{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.25}
+.global-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:-4px 0 18px}.global-controls input{min-width:360px;max-width:560px;flex:1}.layout{display:grid;grid-template-columns:300px 1fr;gap:18px}@media(max-width:1000px){.layout{grid-template-columns:1fr}}
+.left{padding:16px;align-self:start;position:sticky;top:12px}.left h3{margin:0 0 12px}
+.release-btn{width:100%;text-align:left;padding:12px 13px;border:1px solid var(--line);background:#fff;border-radius:14px;margin:8px 0;cursor:pointer;font-family:inherit}.release-btn.active{background:#0f172a;color:#fff;border-color:#0f172a}.release-btn .title{font-weight:760;display:flex;justify-content:space-between;gap:8px}.release-btn .sub{display:block;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.35}.release-btn.active .sub{color:#cbd5e1}
+.context{padding:16px;margin-bottom:14px;border-left:5px solid var(--blue)}.context h2{margin:0 0 6px;font-size:19px}.context p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}select,input{border:1px solid var(--line);border-radius:12px;padding:9px 11px;background:#fff;font-family:inherit}.chip{border:1px solid var(--line);border-radius:999px;padding:7px 10px;background:#fff;cursor:pointer}.chip.active{background:#0f172a;color:#fff;border-color:#0f172a}.swimlanes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}@media(max-width:1050px){.swimlanes{grid-template-columns:1fr}}.swimlane{padding:14px;min-height:190px}.swimlane h3{margin:0 0 4px;font-size:15px;display:flex;justify-content:space-between;gap:8px}.lane-count{font-size:12px;color:#475569;background:#f1f5f9;border:1px solid var(--line);border-radius:999px;padding:3px 8px}.hint{font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.4}
+.project{padding:13px;margin:10px 0;cursor:pointer;border-left:5px solid var(--slate)}.project.release{border-left-color:var(--blue)}.project.mixed{border-left-color:var(--amber)}.project.non{border-left-color:var(--purple)}.project.watch{border-left-color:var(--slate)}.project h4{margin:0 0 6px;font-size:14px}
+.badge{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:11px;background:#f8fafc;margin:2px}.badge.release{background:#eff6ff;border-color:#bfdbfe;color:#1d4ed8}.badge.mixed{background:#fff7ed;border-color:#fed7aa;color:#92400e}.badge.non{background:#f5f3ff;border-color:#ddd6fe;color:#6d28d9}.badge.watch{background:#f8fafc;border-color:#cbd5e1;color:#475569}.badge.ready{background:#f0fdf4;border-color:#bbf7d0;color:#166534}.badge.partial{background:#fffbeb;border-color:#fde68a;color:#92400e}.badge.no,.badge.need{background:#fef2f2;border-color:#fecaca;color:#991b1b}.badge.unknown{background:#f1f5f9;border-color:#cbd5e1;color:#475569}.badge.customer{background:#fff7ed;border-color:#fed7aa;color:#9a3412}
+.small{font-size:12px;color:var(--muted);line-height:1.4}.list-panel,.audit-panel{margin-top:16px;padding:14px}table{width:100%;border-collapse:collapse}th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:13px}th{background:#f8fafc;color:#475569;font-size:12px}
+.expand-cell{width:28px}.chev{font-weight:800;color:#475569;display:inline-block;width:18px}.details-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 9px;cursor:pointer;font-size:12px}
+.child-row{display:none}.child-row.open{display:table-row}.child-box{background:#fbfdff;border:1px solid var(--line);border-radius:14px;padding:12px;margin:4px 0}.child-box h4{margin:0 0 8px;font-size:14px}.child-empty{border:1px dashed var(--line);border-radius:12px;padding:12px;background:white}.child-table th,.child-table td{font-size:12px}
+a{color:#1d4ed8;text-decoration:none}a:hover{text-decoration:underline}.drawer-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.25);z-index:20}.drawer-backdrop.open{display:block}.drawer{position:fixed;top:0;right:-680px;width:680px;max-width:92vw;height:100vh;background:#fff;border-left:1px solid var(--line);box-shadow:-10px 0 30px rgba(15,23,42,.18);z-index:21;transition:right .18s ease;padding:24px;overflow:auto}.drawer.open{right:0}.close{float:right;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;cursor:pointer}.field{margin:15px 0}.field b{display:block;font-size:12px;color:#475569;text-transform:uppercase;letter-spacing:.03em;margin-bottom:4px}.empty{padding:12px;border:1px dashed var(--line);border-radius:12px;background:#fbfdff}
+.filter-state{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+
+.view-toggle{display:flex;gap:8px;align-items:center;margin:0 0 18px}
+.view-toggle .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;cursor:pointer;font-family:inherit}
+.view-toggle .tab.active{background:#0f172a;color:#fff;border-color:#0f172a}
+.route-strip{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0 6px}
+.train-pill{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 7px;font-size:10px;font-weight:760;letter-spacing:.02em;background:#f8fafc;color:#334155}
+.train-pill.ADM_API{background:#eff6ff;border-color:#bfdbfe;color:#1d4ed8}
+.train-pill.MM{background:#ecfeff;border-color:#a5f3fc;color:#0e7490}
+.train-pill.KIO{background:#fff7ed;border-color:#fed7aa;color:#9a3412}
+.train-pill.CV{background:#f5f3ff;border-color:#ddd6fe;color:#6d28d9}
+.train-pill.MAPP{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
+.release-mini{font-size:11px;color:var(--muted);line-height:1.35}
+.decision-view{display:none}
+.decision-view.open{display:block}
+.decision-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media(max-width:1050px){.decision-grid{grid-template-columns:1fr}}
+.decision-card{padding:16px}
+.decision-card h3{margin:0 0 7px;font-size:16px}
+.decision-card .label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#64748b;font-weight:800;margin-top:12px}
+.evidence-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.evidence-metric{border:1px solid var(--line);border-radius:14px;padding:9px 10px;background:#f8fafc;min-width:112px}
+.evidence-metric b{display:block;font-size:20px}
+.evidence-metric span{font-size:11px;color:var(--muted)}
+.support-list{margin:8px 0 0;padding-left:18px;color:#334155;font-size:13px;line-height:1.45}
+.decision-hero{padding:17px;margin-bottom:14px;border-left:5px solid var(--green)}
+.decision-hero h2{margin:0 0 6px;font-size:20px}
+.decision-hero p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+
+
+/* --- Executive visual refinement: train badges + cleaner swimlanes --- */
+
+.route-strip{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin:8px 0 7px;
+}
+
+.train-pill{
+  --train-color:#334155;
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  border:1px solid color-mix(in srgb, var(--train-color) 38%, white);
+  border-radius:999px;
+  padding:4px 8px 4px 6px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.035em;
+  background:#fff;
+  color:var(--train-color);
+  line-height:1;
+  box-shadow:0 1px 0 rgba(15,23,42,.03);
+}
+.train-pill.ADM_API{--train-color:#1d4ed8;background:#eff6ff}
+.train-pill.MM{--train-color:#0e7490;background:#ecfeff}
+.train-pill.KIO{--train-color:#9a3412;background:#fff7ed}
+.train-pill.CV{--train-color:#6d28d9;background:#f5f3ff}
+.train-pill.MAPP{--train-color:#166534;background:#f0fdf4}
+
+.train-icon{
+  width:22px;
+  height:13px;
+  display:inline-block;
+  position:relative;
+  border:2px solid var(--train-color);
+  border-bottom-width:3px;
+  border-radius:5px 7px 7px 5px;
+  background:#fff;
+  flex:0 0 auto;
+}
+.train-icon:before,
+.train-icon:after{
+  content:"";
+  position:absolute;
+  bottom:-7px;
+  width:5px;
+  height:5px;
+  border:2px solid var(--train-color);
+  border-radius:50%;
+  background:#fff;
+}
+.train-icon:before{left:2px}
+.train-icon:after{right:2px}
+.train-icon .stack-a,
+.train-icon .stack-b{
+  position:absolute;
+  top:-7px;
+  width:5px;
+  height:6px;
+  border:2px solid var(--train-color);
+  border-bottom:0;
+  border-radius:2px 2px 0 0;
+  background:#fff;
+}
+.train-icon .stack-a{left:4px}
+.train-icon .stack-b{right:4px}
+
+/* Left rail tabs should visually relate to train badges but stay clean */
+.release-btn{
+  position:relative;
+  overflow:hidden;
+  border-radius:16px;
+  padding:13px 14px 13px 18px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,#fff,#fbfdff);
+}
+.release-btn:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:12px;
+  bottom:12px;
+  width:4px;
+  border-radius:0 999px 999px 0;
+  background:#cbd5e1;
+}
+.release-btn[data-lane="ADM_API"]:before{background:#2563eb}
+.release-btn[data-lane="MM"]:before{background:#0891b2}
+.release-btn[data-lane="KIO"]:before{background:#d97706}
+.release-btn[data-lane="CV"]:before{background:#7c3aed}
+.release-btn[data-lane="MAPP"]:before{background:#16a34a}
+.release-btn[data-lane="all"]:before{background:#0f172a}
+.release-btn.active{
+  background:#0f172a;
+  color:#fff;
+  border-color:#0f172a;
+  box-shadow:0 8px 22px rgba(15,23,42,.16);
+}
+.release-btn.active:before{background:#fff}
+.release-btn .title{align-items:center}
+.release-btn .count-bubble{
+  min-width:28px;
+  height:24px;
+  border-radius:999px;
+  background:#f1f5f9;
+  color:#334155;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:800;
+}
+.release-btn.active .count-bubble{
+  background:rgba(255,255,255,.16);
+  color:#fff;
+}
+
+/* Swimlane separation */
+.swimlanes{
+  align-items:start;
+}
+.swimlane{
+  padding:0;
+  overflow:hidden;
+  min-height:220px;
+  background:#fff;
+}
+.lane-header{
+  padding:15px 16px 13px;
+  background:linear-gradient(180deg,#f8fafc,#fff);
+  border-bottom:1px solid var(--line);
+}
+.lane-header h3{
+  margin:0;
+  font-size:15px;
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  align-items:center;
+}
+.lane-header .hint{
+  margin:6px 0 0;
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.4;
+}
+.lane-body{
+  padding:8px 14px 14px;
+}
+.project{
+  margin:10px 0;
+}
+
+/* Expandable child rows stay visible and clean */
+.expand-cell{width:28px}
+.chev{font-weight:800;color:#475569;display:inline-block;width:18px;cursor:pointer}
+.details-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 9px;cursor:pointer;font-size:12px}
+.child-row{display:none}
+.child-row.open{display:table-row}
+.child-box{background:#fbfdff;border:1px solid var(--line);border-radius:14px;padding:12px;margin:4px 0}
+.child-box h4{margin:0 0 8px;font-size:14px}
+.child-empty{border:1px dashed var(--line);border-radius:12px;padding:12px;background:white}
+.child-table th,.child-table td{font-size:12px}
+
+
+/* Clean left-nav train glyph: coherent with card badges, but less busy */
+.release-btn .name-wrap{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-width:0;
+}
+.nav-train{
+  transform:scale(.78);
+  transform-origin:left center;
+  margin-right:1px;
+  --train-color:#334155;
+}
+.nav-train.all{--train-color:#0f172a}
+.nav-train.ADM_API{--train-color:#1d4ed8}
+.nav-train.MM{--train-color:#0e7490}
+.nav-train.KIO{--train-color:#9a3412}
+.nav-train.CV{--train-color:#6d28d9}
+.nav-train.MAPP{--train-color:#166534}
+.release-btn.active .nav-train{--train-color:#fff}
+.release-btn .title span:first-child:before{content:none !important}
+
+/* Child drilldown should only appear when actual child data is loaded */
+.expand-cell.empty-expand{color:transparent;cursor:default}
+.expand-cell.has-expand{cursor:pointer}
+.child-row.no-children{display:none !important}
+
+
+/* Cleaner train outline icon: closer to user PNG reference */
+.train-icon{
+  display:inline-block;
+  position:relative;
+  width:42px;
+  height:24px;
+  vertical-align:middle;
+  --train-color:#0f172a;
+  flex:0 0 auto;
+}
+.train-icon:before{
+  content:"";
+  position:absolute;
+  left:4px;
+  top:6px;
+  width:32px;
+  height:13px;
+  border:4px solid var(--train-color);
+  border-radius:7px 7px 8px 8px;
+  background:transparent;
+  box-sizing:border-box;
+}
+.train-icon:after{
+  content:"";
+  position:absolute;
+  left:8px;
+  top:1px;
+  width:7px;
+  height:7px;
+  background:var(--train-color);
+  border-radius:2px 2px 0 0;
+  box-shadow:18px 0 0 var(--train-color);
+}
+.train-icon .stack-a,
+.train-icon .stack-b{
+  position:absolute;
+  top:18px;
+  width:9px;
+  height:9px;
+  border:4px solid var(--train-color);
+  border-radius:50%;
+  background:#fff;
+  box-sizing:border-box;
+}
+.train-icon .stack-a{left:7px;box-shadow:11px 0 0 -4px #fff, 11px 0 0 0 var(--train-color)}
+.train-icon .stack-b{left:28px;box-shadow:11px 0 0 -4px #fff, 11px 0 0 0 var(--train-color)}
+.train-icon .bar{
+  position:absolute;
+  left:18px;
+  top:22px;
+  width:15px;
+  height:4px;
+  border-radius:2px;
+  background:var(--train-color);
+}
+.train-icon.small{
+  transform:scale(.72);
+  transform-origin:left center;
+  margin-right:-4px;
+}
+.train-icon.ADM_API{--train-color:#1d4ed8}
+.train-icon.MM{--train-color:#0e7490}
+.train-icon.KIO{--train-color:#9a3412}
+.train-icon.CV{--train-color:#6d28d9}
+.train-icon.MAPP{--train-color:#166534}
+.train-icon.all{--train-color:#0f172a}
+
+
+/* Minimal train outline icon - SVG based, replaces CSS-built car */
+.train-icon{
+  display:inline-flex !important;
+  width:auto !important;
+  height:auto !important;
+  position:static !important;
+  vertical-align:middle;
+  color:var(--train-color,#334155);
+  --train-color:#334155;
+  transform:none !important;
+  margin:0 !important;
+  flex:0 0 auto;
+}
+.train-icon:before,
+.train-icon:after,
+.train-icon .stack-a,
+.train-icon .stack-b,
+.train-icon .bar{
+  content:none !important;
+  display:none !important;
+}
+.train-svg{
+  width:34px;
+  height:21px;
+  display:block;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:3.2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.nav-train .train-svg,
+.train-icon.small .train-svg{
+  width:25px;
+  height:16px;
+  stroke-width:3.4;
+}
+.train-pill{
+  gap:6px !important;
+  padding:4px 9px 4px 6px !important;
+  border-radius:999px !important;
+  border:1px solid color-mix(in srgb, var(--train-color) 34%, white) !important;
+  background:#fff;
+}
+.train-pill.ADM_API,.train-icon.ADM_API{--train-color:#1d4ed8;color:#1d4ed8}
+.train-pill.MM,.train-icon.MM{--train-color:#0e7490;color:#0e7490}
+.train-pill.KIO,.train-icon.KIO{--train-color:#9a3412;color:#9a3412}
+.train-pill.CV,.train-icon.CV{--train-color:#6d28d9;color:#6d28d9}
+.train-pill.MAPP,.train-icon.MAPP{--train-color:#166534;color:#166534}
+.train-pill.ADM_API{background:#eff6ff}
+.train-pill.MM{background:#ecfeff}
+.train-pill.KIO{background:#fff7ed}
+.train-pill.CV{background:#f5f3ff}
+.train-pill.MAPP{background:#f0fdf4}
+.nav-train.all{--train-color:#0f172a;color:#0f172a}
+.release-btn.active .nav-train{--train-color:#fff;color:#fff}
+
+
+/* Ultra-minimal release train icon: thin outline, visual hint only */
+.train-svg{
+  width:30px !important;
+  height:18px !important;
+  stroke-width:2.05 !important;
+  stroke:currentColor !important;
+  fill:none !important;
+  stroke-linecap:round !important;
+  stroke-linejoin:round !important;
+}
+.nav-train .train-svg,
+.train-icon.small .train-svg{
+  width:23px !important;
+  height:14px !important;
+  stroke-width:2.25 !important;
+}
+.train-pill{
+  border:1px solid color-mix(in srgb, var(--train-color) 24%, white) !important;
+  background:color-mix(in srgb, var(--train-color) 7%, white) !important;
+  padding:3px 8px 3px 5px !important;
+  gap:5px !important;
+  box-shadow:none !important;
+}
+.train-pill span:last-child{
+  font-weight:750;
+  letter-spacing:.02em;
+}
+.release-btn .nav-train{
+  opacity:.82;
+}
+.release-btn.active .nav-train{
+  opacity:1;
+}
+
+
+/* 365RM-aligned blue treatment and clickable decision evidence */
+:root{
+  --brand-blue:#005EB8;
+  --brand-blue-dark:#004A92;
+  --brand-blue-soft:#EAF4FF;
+}
+.metric.active{
+  outline:2px solid var(--brand-blue) !important;
+  background:var(--brand-blue-soft) !important;
+}
+.context{
+  border-left-color:var(--brand-blue) !important;
+}
+.release-btn.active{
+  background:var(--brand-blue) !important;
+  border-color:var(--brand-blue) !important;
+  color:#fff !important;
+  box-shadow:0 8px 22px rgba(0,94,184,.18) !important;
+}
+.release-btn.active:before{
+  background:#fff !important;
+}
+.release-btn.active .sub{
+  color:#d9ecff !important;
+}
+.release-btn.active .count-bubble{
+  background:rgba(255,255,255,.18) !important;
+  color:#fff !important;
+}
+.release-btn.active .train-icon,
+.release-btn.active .nav-train,
+.release-btn.active .train-svg{
+  color:#fff !important;
+  stroke:#fff !important;
+  opacity:1 !important;
+}
+.view-toggle .tab.active{
+  background:var(--brand-blue) !important;
+  border-color:var(--brand-blue) !important;
+  color:#fff !important;
+}
+.evidence-metric.clickable{
+  cursor:pointer;
+  transition:.12s ease;
+}
+.evidence-metric.clickable:hover{
+  transform:translateY(-1px);
+  border-color:var(--brand-blue);
+  background:var(--brand-blue-soft);
+  box-shadow:0 6px 14px rgba(15,23,42,.08);
+}
+.evidence-metric.clickable span:after{
+  content:"  ↗";
+  opacity:.65;
+}
+.drawer table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+.drawer th,.drawer td{
+  padding:8px 9px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+  font-size:12px;
+}
+.drawer th{
+  background:#f8fafc;
+  color:#475569;
+}
+/* lighter train icon */
+.train-svg{
+  width:28px !important;
+  height:17px !important;
+  stroke-width:2 !important;
+}
+.nav-train .train-svg,
+.train-icon.small .train-svg{
+  width:23px !important;
+  height:14px !important;
+  stroke-width:2.15 !important;
+}
+.train-pill{
+  border:1px solid color-mix(in srgb, var(--train-color) 22%, white) !important;
+  box-shadow:none !important;
+}
+
+
+/* Final active-state safety patch */
+.release-btn.active,
+.view-toggle .tab.active{
+  background:var(--brand-blue,#005EB8) !important;
+  border-color:var(--brand-blue,#005EB8) !important;
+  color:#fff !important;
+}
+.release-btn.active .train-icon,
+.release-btn.active .train-svg,
+.release-btn.active .nav-train{
+  color:#fff !important;
+  stroke:#fff !important;
+  opacity:1 !important;
+}
+.release-btn.active .count-bubble{
+  background:rgba(255,255,255,.18) !important;
+  color:#fff !important;
+}
+
+
+/* ===== Final executive styling pass ===== */
+:root{
+  --brand-blue:#2563eb;
+  --active:#0f172a;
+  --active-soft:#111827;
+  --rail:#94a3b8;
+}
+
+/* Use dark active state again; remove 365-blue treatment */
+.release-btn.active,
+.view-toggle .tab.active{
+  background:var(--active) !important;
+  border-color:var(--active) !important;
+  color:#fff !important;
+  box-shadow:0 8px 22px rgba(15,23,42,.16) !important;
+}
+.release-btn.active .sub{color:#cbd5e1 !important}
+.release-btn.active .count-bubble{
+  background:rgba(255,255,255,.16) !important;
+  color:#fff !important;
+}
+.metric.active{
+  outline:2px solid var(--active) !important;
+  background:#f8fafc !important;
+}
+.context{border-left-color:var(--active) !important}
+
+/* Replace train graphics with quiet release-route tags */
+.train-icon,
+.train-svg,
+.nav-train{
+  display:none !important;
+}
+.route-strip{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:8px 0 6px;
+}
+.train-pill{
+  --route-accent:#64748b;
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  border:1px solid #cbd5e1 !important;
+  border-left:4px solid var(--route-accent) !important;
+  border-radius:7px !important;
+  background:#fff !important;
+  color:#334155 !important;
+  padding:4px 8px 4px 7px !important;
+  font-size:10px !important;
+  font-weight:800 !important;
+  line-height:1.05 !important;
+  letter-spacing:.035em !important;
+  box-shadow:none !important;
+}
+.train-pill.ADM_API{--route-accent:#64748b}
+.train-pill.MM{--route-accent:#64748b}
+.train-pill.KIO{--route-accent:#64748b}
+.train-pill.CV{--route-accent:#64748b}
+.train-pill.MAPP{--route-accent:#64748b}
+.train-pill span:last-child{font-weight:800}
+
+/* Side navigation: clean rail accent, no icon */
+.release-btn{
+  border-radius:16px !important;
+  background:linear-gradient(180deg,#fff,#fbfdff) !important;
+  padding:13px 14px 13px 18px !important;
+}
+.release-btn:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:12px;
+  bottom:12px;
+  width:4px;
+  border-radius:0 999px 999px 0;
+  background:#94a3b8 !important;
+}
+.release-btn[data-lane="all"]:before{background:#0f172a !important}
+.release-btn[data-lane="ADM_API"]:before{background:#64748b !important}
+.release-btn[data-lane="MM"]:before{background:#64748b !important}
+.release-btn[data-lane="KIO"]:before{background:#64748b !important}
+.release-btn[data-lane="CV"]:before{background:#64748b !important}
+.release-btn[data-lane="MAPP"]:before{background:#64748b !important}
+.release-btn.active:before{background:#fff !important}
+.release-btn .name-wrap{
+  display:flex;
+  align-items:center;
+  gap:0;
+  min-width:0;
+}
+.release-btn .title{
+  align-items:center;
+}
+.release-btn .count-bubble{
+  min-width:28px;
+  height:24px;
+  border-radius:999px;
+  background:#f1f5f9;
+  color:#334155;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:800;
+}
+
+/* Make release vehicle column less busy */
+.release-mini{
+  font-size:11px;
+  color:#64748b;
+  line-height:1.35;
+}
+
+/* Decision support polish */
+.decision-hero{
+  border-left-color:#0f172a !important;
+}
+.decision-hero h2{
+  font-size:21px;
+  margin-bottom:8px;
+}
+.decision-card h3{
+  line-height:1.25;
+}
+.decision-card .small{
+  line-height:1.5;
+}
+.evidence-metric.clickable{
+  cursor:pointer;
+  transition:.12s ease;
+}
+.evidence-metric.clickable:hover{
+  transform:translateY(-1px);
+  border-color:#94a3b8;
+  background:#f8fafc;
+  box-shadow:0 6px 14px rgba(15,23,42,.08);
+}
+.evidence-metric.clickable span:after{
+  content:"  ↗";
+  opacity:.55;
+}
+
+/* Drawer tables and child epic tables */
+.drawer table,
+.child-table{
+  width:100%;
+  border-collapse:collapse;
+}
+.drawer th,.drawer td,
+.child-table th,.child-table td{
+  padding:8px 9px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+  font-size:12px;
+}
+.drawer th,
+.child-table th{
+  background:#f8fafc;
+  color:#475569;
+}
+.child-box{
+  background:#fbfdff;
+}
+
+/* Remove visual noise from PRM support buttons */
+.details-btn{
+  border-color:#cbd5e1;
+}
+
+
+/* Evidence drawer row click behavior */
+.evidence-row-table tr.evidence-click-row{
+  cursor:pointer;
+}
+.evidence-row-table tr.evidence-click-row:hover{
+  background:#f8fafc;
+}
+.evidence-row-table .open-hint{
+  font-size:11px;
+  color:#64748b;
+  white-space:nowrap;
+}
+
+
+/* Final drawer evidence filtering */
+.evidence-metric.clickable{
+  cursor:pointer;
+  transition:.12s ease;
+}
+.evidence-metric.clickable:hover{
+  transform:translateY(-1px);
+  border-color:#94a3b8;
+  background:#f8fafc;
+  box-shadow:0 6px 14px rgba(15,23,42,.08);
+}
+.evidence-metric.clickable span:after{
+  content:"  ↗";
+  opacity:.55;
+}
+.evidence-metric.drawer-filter.active{
+  border-color:#0f172a;
+  background:#f8fafc;
+  outline:2px solid #0f172a;
+}
+.evidence-row-table tr.evidence-click-row{
+  cursor:pointer;
+}
+.evidence-row-table tr.evidence-click-row:hover{
+  background:#f8fafc;
+}
+.evidence-row-table .open-hint{
+  font-size:11px;
+  color:#64748b;
+  white-space:nowrap;
+}
+
+
+/* Publish-ready route tag and drawer cleanup */
+.route-strip{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:7px 0 6px;
+}
+.train-pill{
+  border:1px solid #cbd5e1 !important;
+  border-left:4px solid #64748b !important;
+  border-radius:7px !important;
+  background:#fff !important;
+  color:#334155 !important;
+  padding:4px 8px 4px 7px !important;
+  font-size:10px !important;
+  font-weight:800 !important;
+  line-height:1.05 !important;
+  letter-spacing:.035em !important;
+  box-shadow:none !important;
+}
+.train-pill.ADM_API,
+.train-pill.MM,
+.train-pill.KIO,
+.train-pill.CV,
+.train-pill.MAPP{
+  border-left-color:#64748b !important;
+}
+.release-mini{
+  display:none !important;
+}
+.drawer .field .route-strip{
+  margin-top:4px;
+}
+.drawer .field b{
+  margin-bottom:6px;
+}
+.evidence-row-table th:nth-child(2),
+.evidence-row-table td:nth-child(2){
+  min-width:210px;
+}
+.child-table th:nth-child(2),
+.child-table td:nth-child(2){
+  min-width:260px;
+}
+
+</style></head>
+<body><header><h1>Release Train Readiness Dashboard</h1><p>Executive view to decide which release train to clear first, what can move immediately, and which customer-impacting commitments should be sequenced ahead of lower-impact work.</p></header>
+<main>
+<div class="metrics" id="metrics"></div>
+<div class="global-controls"><input id="search" placeholder="Search initiative, release, blocker..." oninput="render()"><button class="chip" onclick="clearFilters()">Clear filters</button></div>
+<div class="view-toggle"><button id="boardTab" class="tab active" onclick="setMode('board')">Release board</button><button id="decisionTab" class="tab" onclick="setMode('decision')">Decision support</button></div>
+<div class="layout" id="boardView">
+<aside class="panel left"><h3>Release train</h3><div id="releaseNav"></div><p class="small">Use the top bar only for total scope and customer impact. Ready / not ready is calculated inside the selected release train view.</p></aside>
+<section>
+<div class="panel context" id="contextPanel"></div>
+<div class="swimlanes"><div class="panel swimlane"><div class="lane-header"><h3>Ready to release if approved <span class="lane-count" id="readyCount"></span></h3><div class="hint">Release approval or sequencing is the main remaining gate.</div></div><div class="lane-body" id="readyLane"></div></div><div class="panel swimlane"><div class="lane-header"><h3>Not ready yet <span class="lane-count" id="blockedCount"></span></h3><div class="hint">Approval helps, but QA, regression, hotfix, CR, vendor, customer, commercial, or capacity work still blocks movement.</div></div><div class="lane-body" id="blockedLane"></div></div></div>
+<div class="panel list-panel"><h3>Total initiatives in current view</h3><table><thead><tr><th></th><th>Initiative</th><th>Release vehicle</th><th>Readiness</th><th>Classification</th><th>Cost of delay</th><th></th></tr></thead><tbody id="totalTable"></tbody></table></div>
+<div class="panel audit-panel"><h3>Scope audit note</h3><p class="small">This dashboard keeps release filtering in the tabs and readiness in the two lanes. Global search applies across the selected release train and active customer-impact filter. Child Epic drilldowns will appear only when structured Jira parent/Epic data is loaded.</p></div>
+</section></div><section class="decision-view" id="decisionView"><div class="panel decision-hero" id="decisionHero"></div><div class="decision-grid" id="decisionGrid"></div></section></main>
+<div class="drawer-backdrop" id="backdrop" onclick="closeDrawer()"></div><aside class="drawer" id="drawer"><button class="close" onclick="closeDrawer()">Close</button><div id="drawerContent"></div></aside>
+<script>
+const items=[{"id": "PRM-77", "title": "Pico > S1U2 Adyen Payment Integration > PicoCoffee", "roadmap": "Payments", "releases": ["APIv26.04", "MMv26.03", "MMv26.02", "ADMv26.04"], "groups": ["server_gate", "mm_joint", "customer_priority"], "readiness": "Partial", "classification": "Mixed release-delivery risk", "cost": "Customer commitment", "blockers": ["Regression pending", "ADM/API release blocker", "Release sequencing"], "action": "Confirm regression date by EOD; confirm customer commitment date.", "notes": "Meeting context from prior working data: not just MM release approval; regression remains pending and ADM/API blockers were called out.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-77"}, {"id": "PRM-27", "title": "QR Code Receipts > Enable ADM config for QR Receipt option", "roadmap": "Client Experience", "releases": ["APIv26.04", "MMv26.03"], "groups": ["server_gate", "mm_joint", "customer_priority"], "readiness": "Partial", "classification": "Mixed release-delivery risk", "cost": "Operational readiness", "blockers": ["Release approval", "Regression pending", "CR / rebaseline"], "action": "Clear APIv26.04 and MMv26.03 path; confirm CR/rebaseline.", "notes": "Mapped to APIv26.04 and MMv26.03 in meeting notes. Release approval matters, but regression and CR/rebaseline also remain.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-27"}, {"id": "PRM-342", "title": "Pepsi Device Universal PIN", "roadmap": "Operator Experience", "releases": ["ADMv26.04"], "groups": ["server_gate", "customer_priority"], "readiness": "Yes", "classification": "Release-blocked", "cost": "Customer commitment", "blockers": ["Release approval", "CR pending"], "action": "Approve ADMv26.04 path; complete CR/rebaseline mechanics.", "notes": "Classified as release-blocked against ADMv26.04 with CR approval still required.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-342"}, {"id": "ADM-392", "title": "Payroll Deduct > Custom ADM Report Structure", "roadmap": "Operator Experience", "releases": ["ADMv26.04"], "groups": ["server_gate", "customer_priority"], "readiness": "Yes", "classification": "Release-blocked", "cost": "Customer commitment", "blockers": ["Release approval", "CR / rebaseline"], "action": "Approve ADMv26.04; complete CR approval.", "notes": "Classified as release-blocked against ADMv26.04 with CR approval still required.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/ADM-392"}, {"id": "PRM-90", "title": "Q2 2026 > Birthday Gift", "roadmap": "Consumer Experience", "releases": ["MAPPvX.2603.0", "ADMv26.04"], "groups": ["server_gate", "customer_priority"], "readiness": "Yes", "classification": "Release-blocked", "cost": "Customer commitment", "blockers": ["Release approval", "CR pending"], "action": "Approve ADMv26.04 and MAPPxV2603 path; complete CR.", "notes": "Ready if approved. Release approval is the primary blocker.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-90"}, {"id": "PRM-202", "title": "Q2 2026 > More Ways to Earn > Add Enable Push Notifications method", "roadmap": "Consumer Experience", "releases": ["MAPPvX.2603.0", "ADMv26.04"], "groups": ["server_gate", "customer_priority"], "readiness": "Yes", "classification": "Release-blocked", "cost": "Operational readiness", "blockers": ["Release approval", "CR pending"], "action": "Approve ADMv26.04; roll out to PROD on approved deployment day.", "notes": "Data work completed; rollout waits for approved ADM deployment day.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-202"}, {"id": "PRM-207", "title": "Q2 2026 > Allow operators to upload an image for a dining location", "roadmap": "Consumer Experience", "releases": ["ADMv26.04", "MAPPvX.2603.0"], "groups": ["server_gate", "customer_priority"], "readiness": "Yes", "classification": "Release-blocked", "cost": "Operational readiness", "blockers": ["Release approval", "CR / rebaseline", "Release approval checklist"], "action": "Release and Engineering to work through approval checklist; Matt started the CR.", "notes": "Updated meeting notes: release vehicle is ADMv26.04 and MAPPvX.2603.0. Ready to release if approval is granted = Yes. Readiness detail = CR pending. Actual blocker = release approval / CR-rebaseline. Cost of delay = operational readiness. Action item notes: release and engineering to work through the approval checklist; Matt started the CR.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-207"}, {"id": "PRM-203", "title": "Q2 2026 > App-Side Initiative > Time-Based Product Recommendations", "roadmap": "Consumer Experience", "releases": ["APIv26.04", "MAPPvX.2603.0"], "groups": ["server_gate"], "readiness": "Yes", "classification": "Release-blocked", "cost": "Internal-only impact", "blockers": ["Release approval", "CR pending"], "action": "Approve APIv26.04/app-side path; complete CR.", "notes": "Classified as release-blocked against APIv26.04.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-203"}, {"id": "PRM-261", "title": "Reward Redemption Report", "roadmap": "Consumer Experience", "releases": ["APIv26.04", "MAPPvX.2603.0"], "groups": ["server_gate", "customer_priority"], "readiness": "Yes", "classification": "Release-blocked", "cost": "Operational readiness", "blockers": ["Release approval", "CR pending"], "action": "Approve APIv26.04/app-side path; complete CR.", "notes": "Classified as release-blocked against APIv26.04.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-261"}, {"id": "PRM-115", "title": "S1U365 Parity - Sensor Swarm", "roadmap": "Payments", "releases": ["MMv26.02", "MMv26.03"], "groups": ["mm_joint"], "readiness": "Partial", "classification": "Mixed release-delivery risk", "cost": "Internal-only impact", "blockers": ["Regression pending", "QA-regression capacity"], "action": "Confirm combined RC regression timing by EOD.", "notes": "Original pre-read said dev complete waiting on MM release. Meeting notes show regression still pending, so not pure release-blocked.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-115"}, {"id": "PRM-52", "title": "PicoCooler Vision Max > US/CA Launch", "roadmap": "Client Experience", "releases": ["CV_Storev26.02", "MMv26.02", "MMv26.03"], "groups": ["mm_joint", "customer_priority"], "readiness": "No", "classification": "Mixed release-delivery risk", "cost": "Revenue impact", "blockers": ["Regression pending", "Commercial setup"], "action": "Finish regression plan; complete pricing/Sage/commercial setup.", "notes": "Dev complete, but meeting notes show commercial setup and QA-regression remain. Release approval alone does not clear. Related commercial setup dependency: PRM-435 covers pricing / Sage setup and remains tracked as context rather than a separate release-train card.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-52"}, {"id": "PRM-217", "title": "CV > Enable subsidy & payroll deduct functionality", "roadmap": "Client Experience", "releases": ["MMv26.02", "MMv26.03"], "groups": ["mm_joint", "customer_priority"], "readiness": "Partial", "classification": "Mixed release-delivery risk", "cost": "Compliance or date-driven need", "blockers": ["Regression pending", "CR approval"], "action": "Confirm QA plan to finish regression; complete CR.", "notes": "Dev complete but regression pending. Cost of delay marked compliance/date-driven.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-217"}, {"id": "PRM-276", "title": "MobileMarket > Supporting True coolers for CV Variants", "roadmap": "Client Experience", "releases": ["MMv26.02", "MMv26.03"], "groups": ["mm_joint", "customer_priority"], "readiness": "Partial", "classification": "Mixed release-delivery risk", "cost": "Operational readiness", "blockers": ["Regression pending", "CR approval"], "action": "Confirm QA plan to finish regression; complete CR.", "notes": "Regression pending. Meeting classified as mixed release-delivery risk.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-276"}, {"id": "PRM-55", "title": "VisionLink - R2 Enhancements", "roadmap": "Client Experience", "releases": ["MMv26.03", "MMv26.02", "ADMv26.04"], "groups": ["mm_joint"], "readiness": "Partial", "classification": "Mixed release-delivery risk", "cost": "Unknown", "blockers": ["Regression pending", "ADM follow-on capacity"], "action": "Confirm QA plan to finish regression; track ADM follow-on after device code.", "notes": "MM release timing matters, but regression remains open. ADM report validation is follow-on capacity dependency.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-55"}, {"id": "PRM-228", "title": "m40-DN2 integration", "roadmap": "Client Experience", "releases": ["MMv26.02", "MMv26.03"], "groups": ["mm_joint"], "readiness": "Partial", "classification": "Mixed release-delivery risk", "cost": "Internal-only impact", "blockers": ["Regression pending", "CR approval"], "action": "Confirm QA plan and CR approval.", "notes": "Meeting notes show dev complete but regression pending. Treated as mixed risk.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-228"}, {"id": "PRM-36", "title": "QR Age Verification > Selecta Hotel Solution", "roadmap": "Client Experience", "releases": ["MMv26.02", "MMv26.03"], "groups": ["mm_joint", "customer_priority"], "readiness": "Partial", "classification": "Watchlist", "cost": "Customer commitment / operational readiness", "blockers": ["Commercial setup", "Customer decision", "Separate rollout decision"], "action": "Confirm limited-location rollout, commercial mitigation, and customer decision.", "notes": "Can release if separate rollout, but commercial setup and mitigation decision remain. Do not count as clean release-blocked.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-36"}, {"id": "PRM-163", "title": "Remote HSA enhancements", "roadmap": "Operator Experience", "releases": ["MMv26.02", "MMv26.03"], "groups": ["mm_joint", "customer_priority"], "readiness": "Partial", "classification": "Mixed release-delivery risk", "cost": "Operational readiness", "blockers": ["Regression pending", "CR approval"], "action": "Confirm CR/rebaseline and regression completion.", "notes": "Dev complete but regression pending. Mixed release-delivery risk.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-163"}, {"id": "PRM-291", "title": "Canteen > Update fonts", "roadmap": "Consumer Experience", "releases": ["MMv26.02", "MMv26.03"], "groups": ["mm_joint", "customer_priority"], "readiness": "Yes", "classification": "Release-blocked", "cost": "Customer commitment", "blockers": ["CR pending", "Release approval"], "action": "Approve MM path and complete CR/rebaseline.", "notes": "Ready if approved, with CR pending. Count as release-blocked with admin CR step.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-291"}, {"id": "PRM-331", "title": "New .css Theme > AVI FreshForward", "roadmap": "Client Experience", "releases": ["MMv26.03"], "groups": ["mm_joint", "customer_priority"], "readiness": "No", "classification": "Mixed release-delivery risk", "cost": "Customer commitment", "blockers": ["Regression pending", "QA-regression timing"], "action": "Confirm QA plan, CR approval, and rebaseline.", "notes": "Pending MMv26.03 approval, but readiness is no because regression timing remains the blocker.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-331"}, {"id": "PRM-365", "title": "S1U2 M4 > Kiosk > Go to Market", "roadmap": "Payments", "releases": ["KIOv26.03", "Caspayv26.03"], "groups": ["kio_hotfix", "customer_priority"], "readiness": "No", "classification": "Mixed release-delivery risk", "cost": "Downstream roadmap dependency", "blockers": ["KIO hotfix outstanding", "Feature testing incomplete", "Regression pending", "Release vehicle unclear", "MX scope split"], "action": "Confirm release vehicle; split Mexico deliverable; define rebaseline plan mid-week.", "notes": "KIO path is blocked first by hotfix/regression. Transcript excerpt reinforces focus on release freezes and resources pulled away for hotfixes/escalations.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-365"}, {"id": "PRM-33", "title": "MM6/Mini UI/UX 2.0 Re-Design", "roadmap": "Client Experience", "releases": ["KIOv26.03"], "groups": ["kio_hotfix", "customer_priority"], "readiness": "Partial", "classification": "Mixed release-delivery risk", "cost": "Downstream roadmap dependency", "blockers": ["KIO hotfix outstanding", "Hotfix diversion", "QA pending"], "action": "Confirm QA plan and CR/rebaseline after hotfix validation.", "notes": "V5 Dev/QA were redirected to hotfix support; 26.03 regression not meaningfully started. Transcript excerpt confirms hotfix/escalation resource diversion is in scope.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-33"}, {"id": "PRM-113", "title": "MarketSight 1.5", "roadmap": "Client Experience", "releases": ["KIOv26.03"], "groups": ["kio_hotfix"], "readiness": "Partial", "classification": "Mixed release-delivery risk", "cost": "Low", "blockers": ["Resource constraint", "Dev pending"], "action": "Rebaseline.", "notes": "KIO tag exists, but meeting notes identify dev/resource constraint. Do not treat as clean release-blocked.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-113"}, {"id": "PRM-236", "title": "MM6/Mini UI/UX 2.0 Personalized Flows", "roadmap": "Client Experience", "releases": ["KIOv26.03"], "groups": ["kio_hotfix", "customer_priority"], "readiness": "Partial", "classification": "Mixed release-delivery risk", "cost": "Downstream roadmap dependency", "blockers": ["KIO hotfix outstanding", "Hotfix diversion", "QA pending"], "action": "Confirm QA plan and CR/rebaseline.", "notes": "V5/Kiosk Dev and QA diverted to hotfix; regression not ready. Transcript excerpt confirms this is part of the focus area.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-236"}, {"id": "PRM-125", "title": "MM6 Mini Mexico Launch", "roadmap": "Client Experience", "releases": ["KIOv26.03"], "groups": ["kio_hotfix", "customer_priority"], "readiness": "No", "classification": "Non-release schedule risk", "cost": "Operational readiness", "blockers": ["Vendor readiness", "Mexico payments direction", "Certification economics"], "action": "Decide payment/certification direction and rebaseline.", "notes": "Not solved by KIO approval. Blocked by MX payments direction and certification economics.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-125"}, {"id": "PRM-92", "title": "Qualify W12HS2 to sub W10HS2", "roadmap": "Client Experience", "releases": ["CV_Storev26.03"], "groups": ["customer_priority"], "readiness": "No", "classification": "Mixed release-delivery risk", "cost": "Operational readiness", "blockers": ["Vendor / production issue delay", "Dev pending", "QA certification"], "action": "Confirm if image can go independently; approve CR; track 6/11 QA certification.", "notes": "Not dependent on the KIO release path. May move independently if the scope is limited to a new image.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-92"}, {"id": "PRM-401", "title": "Correct Transaction & Video Status Handling for Jarvis and Manual Review", "roadmap": "Client Experience", "releases": ["CVAppv_26.03"], "groups": ["cv"], "readiness": "Yes", "classification": "Release-blocked", "cost": "Unknown", "blockers": ["QA-regression capacity", "Resource constraint", "CR approval"], "action": "Confirm regression pass and complete CR approval.", "notes": "Spotlight source: Release vehicle CVAppv_26.03. Ready to release if approval is granted = Yes. Readiness detail = regression pending. Actual blocker = QA-regression capacity / resource constraint. Action needed = CR approval; regression should wrap this week.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-401"}, {"id": "PRM-277", "title": "Camera Management", "roadmap": "Client Experience", "releases": ["CVWebAppv26.03"], "groups": ["cv"], "readiness": "Partial", "classification": "Mixed release-delivery risk", "cost": "Operational readiness / Internal-only impact", "blockers": ["CR approval", "Regression pending"], "action": "Uma to confirm release readiness once regression passes; complete CR approval / rebaseline.", "notes": "Spotlight source: Release vehicle CVWebAppv26.03. Ready to release = Yes to be confirmed by Uma. Readiness detail = regression pending. Actual blocker = CR approval. Action: Uma to confirm if release ready once regression is a PASS.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-277"}, {"id": "PRM-220", "title": "Camera Annotation for CV devices", "roadmap": "Client Experience", "releases": ["CV_Storev26.03"], "groups": ["cv"], "readiness": "No", "classification": "Mixed release-delivery risk", "cost": "Operational readiness", "blockers": ["Hotfix diversion", "Resource constraint", "Dev in progress", "CR approval"], "action": "Confirm effort remaining and QA schedule for CR approval / rebaseline.", "notes": "Spotlight source: Release vehicle CV_Storev26.03. Ready to release = No. Readiness detail = dev in progress. Actual blocker = hotfix diversion / resource constraint. Action: confirm effort remaining for scheduling CR approval.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-220"}, {"id": "PRM-402", "title": "Dynamic balance UI based on Subsidy availability for app/web", "roadmap": "Consumer Experience", "releases": ["MAPPvX.2603.0"], "groups": ["mapp"], "readiness": "Yes", "classification": "Release-blocked", "cost": "Customer commitment", "blockers": ["Release approval", "CR approval"], "action": "Proceed through MAPPvX.2603.0 release approval and CR approval path.", "notes": "Spotlight source: Release vehicle MAPPXv2603 / MAPPvX.2603. Ready to release if approval is granted = Yes. Actual blocker = release approval. Cost of delay = Customer commitment.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-402"}, {"id": "PRM-350", "title": "Template 1 and 2 Apps > Dining / Scan & Pay > discounts on Cart", "roadmap": "Consumer Experience", "releases": ["MAPPvX.2603.0"], "groups": ["mapp"], "readiness": "Yes", "classification": "Release-blocked", "cost": "Internal-only impact", "blockers": ["Release approval", "CR approval"], "action": "Proceed through MAPPvX.2603.0 release approval and CR approval path.", "notes": "Spotlight source: Release vehicle MAPPXv2603 / MAPPvX.2603. Ready to release if approval is granted = Yes. Actual blocker = release approval. Cost of delay = Internal-only impact.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-350"}, {"id": "PRM-204", "title": "Q2 2026 > App Shortcuts > Fallback options", "roadmap": "Consumer Experience", "releases": ["MAPPvX.2603.0"], "groups": ["mapp"], "readiness": "Yes", "classification": "Release-blocked", "cost": "Internal-only impact", "blockers": ["Release approval", "CR approval"], "action": "Proceed through MAPPvX.2603.0 release approval and CR approval path.", "notes": "Spotlight source: Release vehicle MAPPXv2603 / MAPPvX.2603. Ready to release if approval is granted = Yes. Actual blocker = release approval. Cost of delay = Internal-only impact.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-204"}, {"id": "PRM-144", "title": "Q2 2026 > Scan and Pay > Optionally remove search bar functionality", "roadmap": "Consumer Experience", "releases": ["MAPPvX.2603.0"], "groups": ["mapp"], "readiness": "Yes", "classification": "Release-blocked", "cost": "Customer commitment", "blockers": ["Release approval", "CR approval"], "action": "Proceed through MAPPvX.2603.0 release approval and CR approval path.", "notes": "Spotlight source: Release vehicle MAPPXv2603 / MAPPvX.2603. Ready to release if approval is granted = Yes. Actual blocker = release approval. Cost of delay = Customer commitment.", "confidence": "Confirmed", "url": "https://365retailmarkets.atlassian.net/browse/PRM-144"}];
+const releaseLanes=[{"id": "all", "label": "All release-scope initiatives", "sub": "ADM/API, MM, KIO, CV, MAPP", "matches": []}, {"id": "ADM_API", "label": "ADM / API", "sub": "ADMv26.04 + APIv26.04", "matches": ["ADMv26.04", "APIv26.04"]}, {"id": "MM", "label": "MobileMarket", "sub": "MMv26.02 + MMv26.03 joint RC", "matches": ["MMv26.02", "MMv26.03"]}, {"id": "KIO", "label": "Kiosk", "sub": "KIOv26.03 hotfix / release path", "matches": ["KIOv26.02", "KIOv26.03"]}, {"id": "CV", "label": "CV", "sub": "CV Store / CV WebApp / CV App", "matches": ["CV_Storev26.02", "CV_Storev26.03", "CVWebAppv26.03", "CVApp_v26.03", "CVAppv_26.03"]}, {"id": "MAPP", "label": "Mobile App", "sub": "MAPPvX.2603.0", "matches": ["MAPPvX.2603.0", "MAPPv26.03", "MAPPXv2603", "MAPPxV2603"]}];
+const audit={"included_count": 25, "excluded_count": 3, "excluded_items": [{"id": "PRM-376", "title": "ESL Full Integration", "roadmap": "Client Experience", "releases": ["ADM/API v26.06"]}, {"id": "PRM-84", "title": "Maumee Valley White Label > Valley Markets App", "roadmap": "Consumer Experience", "releases": ["Other"]}, {"id": "PRM-319", "title": "Aramark Snowflake Data Share", "roadmap": "Operator Experience", "releases": ["ADVv26.03"]}]};
+/*
+Populate this object from the Jira child Epic export.
+Expected shape:
+childrenByParent["PRM-77"] = [
+  { key:"EPIC-123", summary:"...", status:"In Progress", fixVersions:["APIv26.04"], dueDate:"2026-06-04" }
+];
+*/
+const childrenByParent={"PRM-27": [{"key": "ADM-85", "summary": "QR Code Receipts > ADM Configuration", "status": "Done", "parent": "PRM-27", "fixVersions": ["ADMv26.01.0"], "dueDate": "2026-02-26", "project": "ADM", "labels": ["PRM-Migration", "jira_escalated"]}, {"key": "API-1229", "summary": "API>Update Provisionapi Pico Defaults for ReceiptOptions", "status": "BACKLOG", "parent": "PRM-27", "fixVersions": ["APIv26.04.0"], "dueDate": "2026-05-21", "project": "API", "labels": []}, {"key": "API-1230", "summary": "DT>Update Existing Pico Values for Receipt Options", "status": "BACKLOG", "parent": "PRM-27", "fixVersions": ["APIv26.04.0"], "dueDate": "2026-05-21", "project": "API", "labels": []}, {"key": "DIN-473", "summary": "QR Code Receipts > RT/MM6/Mini", "status": "Done", "parent": "PRM-27", "fixVersions": ["DINv26.01.0"], "dueDate": "2026-03-12", "project": "DIN", "labels": ["PRM-Migration"]}, {"key": "KIO-57", "summary": "QR Code Receipts > V5/MM6/Mini", "status": "Done", "parent": "PRM-27", "fixVersions": ["KIOv26.01.0"], "dueDate": "2026-03-12", "project": "KIO", "labels": ["PRM-Migration"]}, {"key": "MM-14", "summary": "QR Code Receipts > MobileMarket/CV", "status": "In Progress", "parent": "PRM-27", "fixVersions": ["MMv26.03.0"], "dueDate": "2026-06-04", "project": "MM", "labels": ["PRM-Migration"]}], "PRM-33": [{"key": "ADM-1752", "summary": "ADM > Supporting configuration for Kiosk UI/UX 2.0", "status": "In Progress", "parent": "PRM-33", "fixVersions": ["ADMv26.04.0"], "dueDate": "2026-05-21", "project": "ADM", "labels": []}, {"key": "KIO-760", "summary": "POST NAMA - [Release 1 - NAMA] MM6Mini Kiosk > UI/UX 2.0 Re-Design", "status": "Done", "parent": "PRM-33", "fixVersions": ["KIOv26.02.0"], "dueDate": "2026-04-29", "project": "KIO", "labels": ["PRM-Migration"]}, {"key": "KIO-81", "summary": "[Phase 2] MM6Mini Kiosk > UI/UX 2.0 Re-Design", "status": "In Progress", "parent": "PRM-33", "fixVersions": ["KIOv26.03.0"], "dueDate": "2026-05-21", "project": "KIO", "labels": ["PRM-Migration"]}, {"key": "KIO-951", "summary": "Refinement from NAMA Pt2 - MM6Mini Kiosk > UI/UX 2.0 Re-Design", "status": "In Progress", "parent": "PRM-33", "fixVersions": ["KIOv26.03.0"], "dueDate": "2026-06-04", "project": "KIO", "labels": ["PRM-Migration"]}, {"key": "KIO-80", "summary": "[Phase 1 - NAMA] MM6Mini Kiosk > UI/UX 2.0 Re-Design", "status": "Done", "parent": "PRM-33", "fixVersions": ["KIOv26.01.0"], "dueDate": "2026-03-12", "project": "KIO", "labels": ["PRM-Migration"]}, {"key": "KIO-830", "summary": "[Phase 3] MM6Mini Kiosk > UI/UX 2.0 Re-Design", "status": "Scheduling", "parent": "PRM-33", "fixVersions": ["KIOv26.04.0"], "dueDate": "2026-07-16", "project": "KIO", "labels": []}, {"key": "KIO-1489", "summary": "Payments Flow Testing MM6Mini Kiosk > UI/UX 2.0 Re-Design", "status": "BACKLOG", "parent": "PRM-33", "fixVersions": ["KIOv26.04.0"], "dueDate": "2026-07-16", "project": "KIO", "labels": []}, {"key": "KIO-1485", "summary": "[Phase 4] MM6Mini Kiosk > UI/UX 2.0 Re-Design", "status": "Scheduling", "parent": "PRM-33", "fixVersions": ["KIOv26.05.0"], "dueDate": null, "project": "KIO", "labels": []}, {"key": "KIO-1611", "summary": "[Phase 2] MM6Mini Kiosk > UI/UX 2.0 Re-Design QA Only", "status": "BACKLOG", "parent": "PRM-33", "fixVersions": [], "dueDate": "2026-07-16", "project": "KIO", "labels": []}], "PRM-36": [{"key": "ADM-115", "summary": "ADM > QR Age Verification > Core solution", "status": "Done", "parent": "PRM-36", "fixVersions": ["ADMv26.02.0"], "dueDate": "2026-03-26", "project": "ADM", "labels": ["PRM-Migration"]}, {"key": "ADM-1797", "summary": "ADM > QR Age Verification > Integration", "status": "Done", "parent": "PRM-36", "fixVersions": ["ADMv26.03.0"], "dueDate": "2026-04-23", "project": "ADM", "labels": []}, {"key": "API-60", "summary": "API > QR Age Verification > Core solution", "status": "Done", "parent": "PRM-36", "fixVersions": ["APIv26.02.0"], "dueDate": "2026-03-26", "project": "API", "labels": ["PRM-Migration"]}, {"key": "API-549", "summary": "API > QR Age Verification > Integration", "status": "Done", "parent": "PRM-36", "fixVersions": ["APIv26.03.0"], "dueDate": "2026-04-23", "project": "API", "labels": []}, {"key": "KIO-55", "summary": "V5 > QR Age Verification > Core Solution", "status": "Done", "parent": "PRM-36", "fixVersions": ["KIOv26.02.0"], "dueDate": "2026-04-29", "project": "KIO", "labels": ["PRM-Migration"]}, {"key": "MM-5", "summary": "MobileMarket > QR Age Verification > Core Solution ( Epic for 26.02.0)", "status": "In Progress", "parent": "PRM-36", "fixVersions": ["MMv26.02.0"], "dueDate": "2026-04-23", "project": "MM", "labels": ["PRM-Migration"]}, {"key": "MM-996", "summary": "MobileMarket > QR Age Verification > Core Solution (Epic for work in 26.03.0)", "status": "In Progress", "parent": "PRM-36", "fixVersions": ["MMv26.03.0"], "dueDate": "2026-06-04", "project": "MM", "labels": []}, {"key": "ADM-25", "summary": "ADM > QR Age Verification > Selecta Specific Solution", "status": "Abandoned", "parent": "PRM-36", "fixVersions": [], "dueDate": null, "project": "ADM", "labels": ["PRM-Migration"]}, {"key": "MM-8", "summary": "MobileMarket > QR Age Verification > Selecta Specific Solution", "status": "Abandoned", "parent": "PRM-36", "fixVersions": [], "dueDate": null, "project": "MM", "labels": ["PRM-Migration"]}], "PRM-52": [{"key": "ADM-92", "summary": "PicoCooler Vision Max > ADM", "status": "Done", "parent": "PRM-52", "fixVersions": ["ADMv26.03.0"], "dueDate": "2026-04-23", "project": "ADM", "labels": ["PRM-Migration"]}, {"key": "CV-10", "summary": "PicoCooler Vision Max > Stockwell [Validation & QA Only]", "status": "In Progress", "parent": "PRM-52", "fixVersions": ["CV_Storev26.02.0"], "dueDate": "2026-04-23", "project": "CV", "labels": ["PRM-Migration"]}, {"key": "MAPP-2476", "summary": "365Ops (QA ONLY) > Ensure 6 shelves show up in planogram for MAX config", "status": "Done", "parent": "PRM-52", "fixVersions": ["MAPPvX.2602.0"], "dueDate": "2026-04-23", "project": "MAPP", "labels": []}, {"key": "MM-22", "summary": "PicoCooler Vision Max > MobileMarket", "status": "In Progress", "parent": "PRM-52", "fixVersions": ["MMv26.02.0"], "dueDate": "2026-04-23", "project": "MM", "labels": ["PRM-Migration"]}, {"key": "CV-274", "summary": "PicoCooler Vision Max > 365Ops [Validation & QA Only]", "status": "Abandoned", "parent": "PRM-52", "fixVersions": [], "dueDate": "2026-03-12", "project": "CV", "labels": ["PRM-Migration", "PicoPlatform"]}, {"key": "MM-306", "summary": "PicoCooler Vision Max > NAMA QA", "status": "Abandoned", "parent": "PRM-52", "fixVersions": [], "dueDate": null, "project": "MM", "labels": ["NAMA'26", "PRM-Migration"]}, {"key": "SOS-93970", "summary": "PicoCooler Vision Max > API [Not required]", "status": "Abandoned", "parent": "PRM-52", "fixVersions": [], "dueDate": null, "project": "SOS", "labels": ["PRM-Migration"]}], "PRM-55": [{"key": "ADM-391", "summary": "QA > Age Verification > Verify Operator Reports", "status": "Done", "parent": "PRM-55", "fixVersions": ["ADMv26.04.0"], "dueDate": "2026-05-21", "project": "ADM", "labels": ["PRM-Migration"]}, {"key": "ADM-799", "summary": "QA: ADM > EFT Disbursement", "status": "Done", "parent": "PRM-55", "fixVersions": ["ADMv26.04.0"], "dueDate": "2026-05-21", "project": "ADM", "labels": ["PRM-Migration"]}, {"key": "ADM-800", "summary": "QA only: ADM > Reports for mixed alcohol and non-alcohol sales", "status": "Done", "parent": "PRM-55", "fixVersions": ["ADMv26.04.0"], "dueDate": "2026-05-21", "project": "ADM", "labels": ["PRM-Migration"]}, {"key": "ADM-3607", "summary": "ADM > EFT Disbursement", "status": "In Progress", "parent": "PRM-55", "fixVersions": ["ADMv26.05.0"], "dueDate": "2026-06-11", "project": "ADM", "labels": []}, {"key": "MM-281", "summary": "MM > Improve Consumer UX for subsequent transactions", "status": "In Progress", "parent": "PRM-55", "fixVersions": ["MMv26.02.0"], "dueDate": "2026-04-23", "project": "MM", "labels": ["PRM-Migration"]}, {"key": "MM-558", "summary": "QA > Age Verification > Verify Consumer Flow", "status": "Done", "parent": "PRM-55", "fixVersions": ["MMv26.02.0"], "dueDate": "2026-04-23", "project": "MM", "labels": ["PRM-Migration"]}, {"key": "MM-668", "summary": "MM > Manage closed-loop Card Session / CA", "status": "In Progress", "parent": "PRM-55", "fixVersions": ["MMv26.02.0"], "dueDate": "2026-04-23", "project": "MM", "labels": ["PRM-Migration"]}, {"key": "MM-1056", "summary": "MM> QA only> Support for ADM 26.04.0 epics - to be completed by May 14", "status": "In Progress", "parent": "PRM-55", "fixVersions": ["MMv26.03.0"], "dueDate": "2026-06-04", "project": "MM", "labels": ["PicoPlatform"]}], "PRM-77": [{"key": "MM-331", "summary": "Adyen > S1U2 > PicoCoffee", "status": "In Progress", "parent": "PRM-77", "fixVersions": ["MMv26.02.0"], "dueDate": "2026-04-23", "project": "MM", "labels": ["PRM-Migration"]}, {"key": "MM-999", "summary": "Move Anything done prior to 26.02.0 to this epic for Adyen PicoCoffee", "status": "Done", "parent": "PRM-77", "fixVersions": ["MMv26.01.1"], "dueDate": null, "project": "MM", "labels": []}], "PRM-90": [{"key": "ADM-13", "summary": "Q1 2026 > ADM > Birthday Gift", "status": "In Progress", "parent": "PRM-90", "fixVersions": ["ADMv26.04.0"], "dueDate": "2026-05-21", "project": "ADM", "labels": ["PRM-Migration"]}, {"key": "API-15", "summary": "Q1 2026 > API > Birthday Gift", "status": "Done", "parent": "PRM-90", "fixVersions": ["APIv26.01.0"], "dueDate": "2026-02-26", "project": "API", "labels": ["PRM-Migration"]}, {"key": "API-548", "summary": "Q1 > API > Birthday Gift > P2", "status": "Done", "parent": "PRM-90", "fixVersions": ["APIv26.02.0"], "dueDate": "2026-03-26", "project": "API", "labels": []}, {"key": "API-814", "summary": "Q1 > API  > Birthday Gift > P3", "status": "Done", "parent": "PRM-90", "fixVersions": ["APIv26.03.0"], "dueDate": "2026-04-23", "project": "API", "labels": []}, {"key": "MAPP-19", "summary": "Q2 2026 > APP > Birthday Gift", "status": "In Progress", "parent": "PRM-90", "fixVersions": ["MAPPvX.2603.0"], "dueDate": "2026-06-04", "project": "MAPP", "labels": ["PRM-Migration"]}], "PRM-92": [{"key": "CV-808", "summary": "Creating and Epic for 26.01.0 items to split work ", "status": "Done", "parent": "PRM-92", "fixVersions": ["CV_Storev26.01.0"], "dueDate": null, "project": "CV", "labels": []}, {"key": "CV-298", "summary": "Test W12HS2 PC that will replace the W10HS2 for 12-cam CV products", "status": "Blocked", "parent": "PRM-92", "fixVersions": ["CV_Storev26.02.0"], "dueDate": null, "project": "CV", "labels": ["PRM-Migration"]}, {"key": "CV-1143", "summary": "Continued work for Test W12HS2 PC that will replace the W10HS2 for 12-cam CV products", "status": "In Progress", "parent": "PRM-92", "fixVersions": ["CV_Storev26.03.0"], "dueDate": "2026-06-04", "project": "CV", "labels": []}, {"key": "CV-1301", "summary": "QA Only for Test W12HS2 PC that will replace the W10HS2 for 12-cam CV products", "status": "Intake Ready", "parent": "PRM-92", "fixVersions": ["CV_Storev26.04.0"], "dueDate": "2026-07-16", "project": "CV", "labels": []}], "PRM-113": [{"key": "ADM-29", "summary": "MarketSight: Add \"Display - Immediate Notification\" drop-down option to modes", "status": "Done", "parent": "PRM-113", "fixVersions": ["ADMv26.01.0"], "dueDate": "2026-02-26", "project": "ADM", "labels": ["PRM-Migration"]}, {"key": "CVP-69", "summary": "MarketSight 1.5 - Test prototype Tray ", "status": "Done", "parent": "PRM-113", "fixVersions": ["CVPv26.01.0"], "dueDate": "2026-03-26", "project": "CVP", "labels": ["PRM-Migration"]}, {"key": "CVP-2", "summary": "CV for MS 1.5 improvements", "status": "Done", "parent": "PRM-113", "fixVersions": ["CVPv26.02.0"], "dueDate": "2026-03-26", "project": "CVP", "labels": ["PRM-Migration"]}, {"key": "CVP-224", "summary": "AI > Display Immediately Notification", "status": "Ready For Dev", "parent": "PRM-113", "fixVersions": ["CVPv26.04.0"], "dueDate": "2026-05-21", "project": "CVP", "labels": []}, {"key": "KIO-736", "summary": "KIO> Display Immediately Notification", "status": "Done", "parent": "PRM-113", "fixVersions": ["KIOv26.02.0"], "dueDate": "2026-04-29", "project": "KIO", "labels": ["PRM-Migration"]}, {"key": "KIO-1298", "summary": "MarketSight 1.5 Bug Fixes and testing", "status": "In Progress", "parent": "PRM-113", "fixVersions": ["KIOv26.03.0"], "dueDate": "2026-06-04", "project": "KIO", "labels": []}, {"key": "KIO-1356", "summary": "MarketSight 1.5 Bug Fixes and testing P2", "status": "BACKLOG", "parent": "PRM-113", "fixVersions": ["KIOv26.03.0"], "dueDate": "2026-06-04", "project": "KIO", "labels": []}, {"key": "KIO-97", "summary": "V5 > UX and UI enhancements to MS 1.5", "status": "Done", "parent": "PRM-113", "fixVersions": ["KIOv26.01.0"], "dueDate": "2026-04-23", "project": "KIO", "labels": ["PRM-Migration"]}, {"key": "SOS-101810", "summary": "Offer Tray as Optional Add-on for MarketSight 1.5", "status": "Done", "parent": "PRM-113", "fixVersions": ["V5 TEXPO Project"], "dueDate": "2026-03-02", "project": "SOS", "labels": ["PRM-Migration"]}], "PRM-115": [{"key": "MM-25", "summary": "S1U365 Parity > Sensor Swarm Support - CA", "status": "In Progress", "parent": "PRM-115", "fixVersions": ["MMv26.02.0"], "dueDate": "2026-04-23", "project": "MM", "labels": ["PRM-Migration"]}], "PRM-125": [{"key": "KIO-65", "summary": "V5 > MM6Mini Mexico [QA/Validation Only]", "status": "Done", "parent": "PRM-125", "fixVersions": ["KIOv26.01.0"], "dueDate": "2026-03-12", "project": "KIO", "labels": ["PRM-Migration"]}, {"key": "SOS-83859", "summary": "MM6 Mini Mexico > Launch Activities & Materials [No Dev Effort]", "status": "In Progress", "parent": "PRM-125", "fixVersions": ["PMO Q2 Cleanup"], "dueDate": "2026-05-29", "project": "SOS", "labels": ["PRM-Migration"]}, {"key": "PMO-314", "summary": "Hardware localization > MM6Mini Mexico [No Dev Effort]", "status": "In Progress", "parent": "PRM-125", "fixVersions": [], "dueDate": "2026-05-29", "project": "PMO", "labels": ["PRM-Migration"]}], "PRM-144": [{"key": "API-28", "summary": "Q2 2026 > API > Scan and Pay > Optionally remove search bar functionality", "status": "Done", "parent": "PRM-144", "fixVersions": ["APIv26.03.0"], "dueDate": "2026-04-23", "project": "API", "labels": ["PRM-Migration"]}, {"key": "MAPP-143", "summary": "Q2 2026 > APP > Scan and Pay > Optionally remove search bar functionality", "status": "In Progress", "parent": "PRM-144", "fixVersions": ["MAPPvX.2603.0"], "dueDate": "2026-06-04", "project": "MAPP", "labels": ["PRM-Migration"]}, {"key": "ADM-102", "summary": "Q2 2026 > ADM > Scan and Pay > Optionally remove search bar functionality", "status": "Abandoned", "parent": "PRM-144", "fixVersions": [], "dueDate": "2026-04-23", "project": "ADM", "labels": ["PRM-Migration"]}], "PRM-163": [{"key": "ADM-68", "summary": "ADM > HSA Enhancements", "status": "Done", "parent": "PRM-163", "fixVersions": ["ADMv26.03.0"], "dueDate": "2026-04-23", "project": "ADM", "labels": ["PRM-Migration"]}, {"key": "API-166", "summary": "PicoCooler HSA Remote Reset in 365Ops App", "status": "Done", "parent": "PRM-163", "fixVersions": ["APIv26.03.0"], "dueDate": "2026-04-23", "project": "API", "labels": ["PRM-Migration"]}, {"key": "CV-267", "summary": "CV - QA Only - Integration testing for ADM enhancements for HSA management", "status": "Abandoned", "parent": "PRM-163", "fixVersions": ["CV_WebAppv26.02.0"], "dueDate": "2026-04-23", "project": "CV", "labels": ["PRM-Migration"]}, {"key": "MM-748", "summary": "MobileMarket > HSA Enhancements", "status": "In Progress", "parent": "PRM-163", "fixVersions": ["MMv26.02.0"], "dueDate": "2026-04-23", "project": "MM", "labels": ["PRM-Migration"]}], "PRM-202": [{"key": "ADM-230", "summary": "Q2 2026 > ADM > More Ways to Earn > Add \"Enable push notifications\" method", "status": "In Progress", "parent": "PRM-202", "fixVersions": ["ADMv26.04.0"], "dueDate": "2026-05-21", "project": "ADM", "labels": ["PRM-Migration"]}, {"key": "API-106", "summary": "Q2 2026 > API > More Ways to Earn > Add \"Enable Push Notifications\" method", "status": "Done", "parent": "PRM-202", "fixVersions": ["APIv26.03.0"], "dueDate": "2026-04-23", "project": "API", "labels": ["PRM-Migration"]}, {"key": "MAPP-349", "summary": "Q2 2026 > APP > More Ways to Earn > Add \"Enable Push Notifications\" method", "status": "In Progress", "parent": "PRM-202", "fixVersions": ["MAPPvX.2603.0"], "dueDate": "2026-06-04", "project": "MAPP", "labels": ["PRM-Migration"]}], "PRM-203": [{"key": "AE-622", "summary": "Phase 2.5: Reconciliation of Customer Day-Part and Fallback Recommendation Logic", "status": "Done", "parent": "PRM-203", "fixVersions": ["ADVv26.03.0"], "dueDate": "2026-05-21", "project": "AE", "labels": []}, {"key": "API-107", "summary": "Q2 2026 > API > Time-Based Product Recommendations", "status": "In Progress", "parent": "PRM-203", "fixVersions": ["APIv26.04.0"], "dueDate": "2026-05-21", "project": "API", "labels": ["PRM-Migration"]}, {"key": "MAPP-350", "summary": "Q2 2026 > APP > QA ONLY > Time-Based Product Recommendations", "status": "In Progress", "parent": "PRM-203", "fixVersions": ["MAPPvX.2603.0"], "dueDate": "2026-05-21", "project": "MAPP", "labels": ["PRM-Migration"]}], "PRM-204": [{"key": "API-108", "summary": "Q2 2026 > API > App Shortcuts > Fallback options", "status": "Abandoned", "parent": "PRM-204", "fixVersions": ["APIv26.03.0"], "dueDate": "2026-04-23", "project": "API", "labels": ["PRM-Migration"]}, {"key": "MAPP-351", "summary": "Q2 2026 > APP > App Shortcuts > Fallback options", "status": "In Progress", "parent": "PRM-204", "fixVersions": ["MAPPvX.2603.0"], "dueDate": "2026-06-04", "project": "MAPP", "labels": ["PRM-Migration"]}, {"key": "ADM-232", "summary": "Q2 2026 > ADM > App Shortcuts > Fallback options", "status": "Abandoned", "parent": "PRM-204", "fixVersions": [], "dueDate": null, "project": "ADM", "labels": ["PRM-Migration"]}], "PRM-207": [{"key": "ADM-233", "summary": "Q2 2026 > ADM > Allow operators to upload an image for a dining location", "status": "In Progress", "parent": "PRM-207", "fixVersions": ["ADMv26.04.0"], "dueDate": "2026-05-21", "project": "ADM", "labels": ["PRM-Migration"]}, {"key": "API-110", "summary": "Q2 2026 > API > Allow operators to upload an image for a dining location", "status": "Done", "parent": "PRM-207", "fixVersions": ["APIv26.03.0"], "dueDate": "2026-04-23", "project": "API", "labels": ["PRM-Migration"]}, {"key": "MAPP-404", "summary": "Q2 2026 > APP > Allow operators to upload an image for a dining location", "status": "In Progress", "parent": "PRM-207", "fixVersions": ["MAPPvX.2603.0"], "dueDate": "2026-06-04", "project": "MAPP", "labels": ["Eurest", "PRM-Migration"]}], "PRM-217": [{"key": "API-178", "summary": "API > Bankable > Support subsidy functionality for CV devices  ", "status": "Done", "parent": "PRM-217", "fixVersions": ["APIv26.02.0"], "dueDate": "2026-03-26", "project": "API", "labels": ["PRM-Migration"]}, {"key": "MM-250", "summary": "Mobile Market > Support subsidy functionality for CV devices", "status": "In Progress", "parent": "PRM-217", "fixVersions": ["MMv26.02.0"], "dueDate": "2026-04-23", "project": "MM", "labels": ["PRM-Migration"]}, {"key": "ADM-254", "summary": "ADM > Enable subsidy support logic for CV Devices", "status": "Abandoned", "parent": "PRM-217", "fixVersions": [], "dueDate": null, "project": "ADM", "labels": ["PRM-Migration"]}], "PRM-220": [{"key": "CV-256", "summary": "Webapp > Develop Backend Services for Camera Annotation Storage and Retrieval", "status": "In Progress", "parent": "PRM-220", "fixVersions": ["CV_WebAppv26.03.0"], "dueDate": "2026-06-04", "project": "CV", "labels": ["PRM-Migration"]}, {"key": "CV-343", "summary": "Stockwell > Create UI for Camera Annotation and listing devices with and without Camera Annotations", "status": "In Progress", "parent": "PRM-220", "fixVersions": ["CV_WebAppv26.03.0"], "dueDate": "2026-06-04", "project": "CV", "labels": ["PRM-Migration"]}, {"key": "CVP-6", "summary": "AI > Integrate Annotation Features with Tripwire Algorithm", "status": "Done", "parent": "PRM-220", "fixVersions": ["CVPv26.02.0"], "dueDate": "2026-03-26", "project": "CVP", "labels": ["PRM-Migration"]}], "PRM-228": [{"key": "ADM-1481", "summary": "Configure DN2 Controller for M40 coolers", "status": "Done", "parent": "PRM-228", "fixVersions": ["ADMv26.02.0"], "dueDate": "2026-03-26", "project": "ADM", "labels": ["PRM-Migration"]}, {"key": "MM-273", "summary": "Mobile Market > New M40 Controller > Parity with Old Controller", "status": "In Progress", "parent": "PRM-228", "fixVersions": ["MMv26.02.0"], "dueDate": null, "project": "MM", "labels": ["PRM-Migration"]}, {"key": "MM-1385", "summary": "Rollover work for Q3 since we did not complete M40 parity testing", "status": "Abandoned", "parent": "PRM-228", "fixVersions": ["MMv26.03.0"], "dueDate": null, "project": "MM", "labels": ["Rollover-risk"]}, {"key": "SOS-81281", "summary": "Mobile Markets > New Controller from Minus40 & Communication for External Systems", "status": "Done", "parent": "PRM-228", "fixVersions": ["Mobile Market v4.31.0"], "dueDate": "2025-10-31", "project": "SOS", "labels": ["PRM-Migration"]}, {"key": "SOS-81194", "summary": "Stockwell PC > modify store code to handle new and old version of m40 lock controller", "status": "Abandoned", "parent": "PRM-228", "fixVersions": [], "dueDate": null, "project": "SOS", "labels": ["PRM-Migration"]}], "PRM-236": [{"key": "ADM-323", "summary": "ADM > Personalized GMA Flows (MM6/Mini)", "status": "In Progress", "parent": "PRM-236", "fixVersions": ["ADMv26.04.0"], "dueDate": "2026-05-21", "project": "ADM", "labels": ["PRM-Migration"]}, {"key": "API-143", "summary": "API > Personalized GMA Flows (MM6/Mini)", "status": "In Progress", "parent": "PRM-236", "fixVersions": ["APIv26.04.0"], "dueDate": "2026-05-21", "project": "API", "labels": ["PRM-Migration"]}, {"key": "KIO-362", "summary": "MM6/Mini > Personalized GMA Flows", "status": "In Progress", "parent": "PRM-236", "fixVersions": ["KIOv26.03.0"], "dueDate": "2026-06-04", "project": "KIO", "labels": ["PRM-Migration"]}, {"key": "KIO-1399", "summary": "MM6/Mini > Personalized GMA Flows P2", "status": "Intake Ready", "parent": "PRM-236", "fixVersions": ["KIOv26.04.0"], "dueDate": "2026-07-16", "project": "KIO", "labels": ["PRM-Migration"]}, {"key": "MAPP-388", "summary": "Mobile > Personalized GMA Flows on MM6/Mini", "status": "Abandoned", "parent": "PRM-236", "fixVersions": [], "dueDate": null, "project": "MAPP", "labels": ["PRM-Migration"]}], "PRM-261": [{"key": "API-167", "summary": "API > Reward Redemption Report", "status": "Done", "parent": "PRM-261", "fixVersions": ["APIv26.03.0", "APIv26.04.0"], "dueDate": "2026-05-21", "project": "API", "labels": ["PRM-Migration"]}, {"key": "MAPP-403", "summary": "QA only > Mobile Apps > Reward Redemption Report (to be completed with API changes)", "status": "In Progress", "parent": "PRM-261", "fixVersions": ["MAPPvX.2603.0"], "dueDate": "2026-05-21", "project": "MAPP", "labels": ["PRM-Migration"]}], "PRM-276": [{"key": "ADM-1220", "summary": "Extend support to \"True\" Coolers for CV devices", "status": "Done", "parent": "PRM-276", "fixVersions": ["ADMv26.03.0"], "dueDate": "2026-04-23", "project": "ADM", "labels": ["PRM-Migration"]}, {"key": "CV-564", "summary": "Extend support to \"True\" Coolers in WebApp", "status": "Done", "parent": "PRM-276", "fixVersions": ["CV_WebAppv26.02.0"], "dueDate": "2026-04-23", "project": "CV", "labels": ["PRM-Migration"]}, {"key": "MM-325", "summary": "MobileMarket/Setup > Support \"True\" cabinet type on Vision devices", "status": "In Progress", "parent": "PRM-276", "fixVersions": ["MMv26.02.0"], "dueDate": "2026-04-23", "project": "MM", "labels": ["PRM-Migration"]}, {"key": "MM-1000", "summary": "Creating an epic just to split out what's in 26.01.0 vs 26.02.0", "status": "Done", "parent": "PRM-276", "fixVersions": ["MMv26.01.1"], "dueDate": null, "project": "MM", "labels": []}], "PRM-277": [{"key": "CV-315", "summary": "CV Camera Management - Store Work", "status": "Done", "parent": "PRM-277", "fixVersions": ["CV_Storev26.02.0"], "dueDate": "2026-04-23", "project": "CV", "labels": ["PRM-Migration"]}, {"key": "CV-263", "summary": "CV Camera Management - Webapp", "status": "Ready For Dev", "parent": "PRM-277", "fixVersions": ["CV_WebAppv26.03.0"], "dueDate": "2026-06-04", "project": "CV", "labels": ["PRM-Migration"]}], "PRM-291": [{"key": "MAPP-1267", "summary": "APP > Canteen > Company Kitchen font updates", "status": "Done", "parent": "PRM-291", "fixVersions": ["MAPPvX.2601.0"], "dueDate": "2026-03-12", "project": "MAPP", "labels": ["PRM-Migration"]}, {"key": "MM-481", "summary": "Canteen > Stockwell/CV, CVExpress .css font updates", "status": "In Progress", "parent": "PRM-291", "fixVersions": ["MMv26.02.0"], "dueDate": "2026-04-23", "project": "MM", "labels": ["PRM-Migration"]}, {"key": "KIO-525", "summary": "Canteen > .css font updates", "status": "Abandoned", "parent": "PRM-291", "fixVersions": [], "dueDate": null, "project": "KIO", "labels": ["PRM-Migration"]}, {"key": "MAPP-1266", "summary": "APP > Canteen > Connect & Pay font updates", "status": "Abandoned", "parent": "PRM-291", "fixVersions": [], "dueDate": null, "project": "MAPP", "labels": ["PRM-Migration"]}], "PRM-331": [{"key": "ADM-2067", "summary": "ADM > Create New AVI FreshForward CSS/Theme", "status": "Done", "parent": "PRM-331", "fixVersions": ["ADMv26.03.0"], "dueDate": "2026-04-30", "project": "ADM", "labels": []}, {"key": "MM-859", "summary": "CV > New AVI Theme (FreshForward) ", "status": "In Progress", "parent": "PRM-331", "fixVersions": ["MMv26.03.0"], "dueDate": "2026-06-04", "project": "MM", "labels": []}], "PRM-342": [{"key": "ADM-2968", "summary": "Pepsi Device Universal PIN > ADM", "status": "In Progress", "parent": "PRM-342", "fixVersions": ["ADMv26.04.0"], "dueDate": "2026-05-21", "project": "ADM", "labels": []}, {"key": "API-964", "summary": "Pepsi Device Universal PIN > API Updates for Full Sync", "status": "In Progress", "parent": "PRM-342", "fixVersions": ["APIv26.04.0"], "dueDate": "2026-05-21", "project": "API", "labels": []}, {"key": "MM-1207", "summary": "QA ONLY - Pepsi Device Universal PIN > Mobile Market", "status": "In Progress", "parent": "PRM-342", "fixVersions": ["MMv26.03.0"], "dueDate": "2026-05-21", "project": "MM", "labels": []}], "PRM-350": [{"key": "API-621", "summary": "API > Dining / Scan & Pay > Ensure discounts are showing as intended on the Cart", "status": "Done", "parent": "PRM-350", "fixVersions": ["APIv26.03.0"], "dueDate": "2026-04-23", "project": "API", "labels": []}, {"key": "MAPP-1665", "summary": "APP > Template 1 and 2 > Dining / Scan & Pay > Ensure discounts are showing as intended on the Cart", "status": "In Progress", "parent": "PRM-350", "fixVersions": ["MAPPvX.2603.0"], "dueDate": "2026-06-04", "project": "MAPP", "labels": []}], "PRM-365": [{"key": "KIO-630", "summary": "S1U2 M4 > V5 > Payments Integration Testing (QA Only)", "status": "Blocked", "parent": "PRM-365", "fixVersions": ["KIOv26.03.0"], "dueDate": "2026-06-04", "project": "KIO", "labels": ["PRM-Migration"]}, {"key": "PMO-84", "summary": "Documentation needed for S1U2-M4", "status": "In Progress", "parent": "PRM-365", "fixVersions": [], "dueDate": null, "project": "PMO", "labels": []}], "PRM-401": [{"key": "CV-511", "summary": "Correct Transaction & Video Status Handling for Jarvis and Manual Review - .02", "status": "Done", "parent": "PRM-401", "fixVersions": ["CV_WebAppv26.02.0"], "dueDate": "2026-04-16", "project": "CV", "labels": []}, {"key": "CV-1016", "summary": "Correct Transaction & Video Status Handling for Jarvis and Manual Review - .03", "status": "In Progress", "parent": "PRM-401", "fixVersions": ["CV_WebAppv26.03.0"], "dueDate": "2026-06-04", "project": "CV", "labels": []}], "PRM-402": [{"key": "MAPP-2755", "summary": "APP/Web > Dynamic balance UI based on Subsidy availability", "status": "In Progress", "parent": "PRM-402", "fixVersions": ["MAPPvX.2603.0"], "dueDate": "2026-06-04", "project": "MAPP", "labels": ["Eurest"]}, {"key": "API-856", "summary": "API > Home page > Support dynamic balance UI based on Subsidy availability for app/web", "status": "Abandoned", "parent": "PRM-402", "fixVersions": [], "dueDate": null, "project": "API", "labels": ["Eurest"]}]};
+let activeRelease='all';
+let impactFilter='';
+
+const blockerTypes=[
+ ['release','Release approval'],
+ ['qa','QA / regression'],
+ ['hotfix','Hotfix / diversion'],
+ ['cr','CR / rebaseline'],
+ ['business','Vendor / customer / commercial / design'],
+ ['resource','Resource / capacity'],
+ ['unknown','Unknown / other']
+];
+
+function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function ckey(c){return c==='Release-blocked'?'release':c==='Mixed release-delivery risk'?'mixed':c==='Non-release schedule risk'?'non':'watch'}
+function rkey(r){return r==='Yes'?'ready':r==='Partial'?'partial':r==='No'?'no':'unknown'}
+function badge(t,c=''){return `<span class="badge ${c}">${esc(t)}</span>`}
+function isCustomerImpact(i){const c=(i.cost||'').toLowerCase();return c.includes('customer')||c.includes('revenue')||c.includes('operational')||c.includes('compliance')||c.includes('dependency')}
+function impactBucket(i){const c=(i.cost||'').toLowerCase();if(c.includes('unknown'))return'unknown';if(isCustomerImpact(i))return'yes';return'no'}
+function releaseMatches(i,lane){if(lane.id==='all')return true;return (i.releases||[]).some(r=>lane.matches.includes(r))}
+function releaseCount(lane){return items.filter(i=>releaseMatches(i,lane)).length}
+function hasReadinessBlocker(i){const s=[...(i.blockers||[]), i.action||'', i.notes||''].join(' ').toLowerCase(); return s.includes('regression')||s.includes('qa pending')||s.includes('qa-regression')||s.includes('hotfix')||s.includes('dev pending')||s.includes('dev in progress')||s.includes('vendor')||s.includes('commercial')||s.includes('customer decision')||s.includes('design')||s.includes('resource constraint')}
+function statusGroup(i){return (i.readiness==='Yes'&&i.classification==='Release-blocked'&&!hasReadinessBlocker(i))?'ready':'blocked'}
+function blockerBucket(i){const s=[...(i.blockers||[]), i.action||'', i.notes||''].join(' ').toLowerCase(); if(s.includes('qa')||s.includes('regression')||s.includes('testing'))return'qa'; if(s.includes('hotfix')||s.includes('diversion'))return'hotfix'; if(s.includes('cr')||s.includes('rebaseline'))return'cr'; if(s.includes('vendor')||s.includes('customer')||s.includes('commercial')||s.includes('design'))return'business'; if(s.includes('resource')||s.includes('capacity'))return'resource'; if(s.includes('release approval')||s.includes('release blocker')||s.includes('release sequencing'))return'release'; return'unknown'}
+function setRelease(id){activeRelease=id;clearFilters(false);render()}
+function impactLabel(v){return v==='yes'?'Yes':v==='no'?'No / low':v==='unknown'?'Unknown':v}
+function setImpact(v){impactFilter=impactFilter===v?'':v;render()}
+function clearFilters(doRender=true){impactFilter='';document.getElementById('search')&&(document.getElementById('search').value=''); if(doRender)render()}
+function laneBase(){const lane=releaseLanes.find(l=>l.id===activeRelease);const q=(document.getElementById('search')?.value||'').toLowerCase();let list=items.filter(i=>releaseMatches(i,lane));if(q)list=list.filter(i=>[i.id,i.title,i.roadmap,i.classification,i.readiness,i.cost,(i.releases||[]).join(' '),(i.blockers||[]).join(' '),i.action,i.notes].join(' ').toLowerCase().includes(q));return list}
+function filteredList(){let list=laneBase();if(impactFilter)list=list.filter(i=>impactBucket(i)===impactFilter);return list}
+
+let activeMode='board';
+function setMode(m){activeMode=m;render()}
+function trainsForItem(i){return releaseLanes.filter(l=>l.id!=='all'&&(i.releases||[]).some(r=>l.matches.includes(r)))}
+
+function trainSvg(type=''){return ''}
+function trainPills(i){const trains=trainsForItem(i);const labelFor=t=>t.id==='ADM_API'?'ADM/API':t.id==='MAPP'?'APP':t.id;return `<div class="route-strip">${trains.map(t=>`<span class="train-pill ${t.id}" title="${esc(t.label)}"><span>${esc(labelFor(t))}</span></span>`).join('')||`<span class="train-pill"><span>UNMAPPED</span></span>`}</div>`}
+function releaseMini(i){const trains=trainsForItem(i);const label=trains.length?trains.map(t=>t.label).join(' + '):'No mapped release train';return `<div class="release-mini">${esc(label)}</div>`}
+function selectedLaneLabel(){const lane=releaseLanes.find(l=>l.id===activeRelease);return lane?lane.label:'Selected release train'}
+function supportIds(list,max=5){return list.slice(0,max).map(i=>`<li>${i.url?`<a href="${i.url}" target="_blank">${esc(i.id)}</a>`:esc(i.id)} — ${esc(i.title)}</li>`).join('') || '<li>No initiatives in this slice.</li>'}
+function idsForRelease(releaseId){const lane=releaseLanes.find(l=>l.id===releaseId);return items.filter(i=>releaseMatches(i,lane))}
+function readyForRelease(releaseId){return idsForRelease(releaseId).filter(i=>statusGroup(i)==='ready')}
+function blockedForRelease(releaseId){return idsForRelease(releaseId).filter(i=>statusGroup(i)==='blocked')}
+function customerFor(list){return list.filter(isCustomerImpact)}
+function openEvidence(releaseId, impact=''){activeMode='board';activeRelease=releaseId;impactFilter=impact;render();window.scrollTo({top:0,behavior:'smooth'})}
+function supportLinks(items,max=8){return items.slice(0,max).map(i=>`<button class="details-btn" onclick="openDrawer('${i.id}')">${esc(i.id)}</button>`).join('') || '<span class="small">No parent rows in this evidence slice.</span>'}
+
+function escapeAttr(s){return String(s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\n/g,' ')}
+function drawerRowsFromItems(list){
+  return list.length ? `<table class="evidence-row-table"><thead><tr><th>Initiative</th><th>Release train / vehicle</th><th>Readiness</th><th>Cost of delay</th><th></th></tr></thead><tbody>${
+    list.map(i=>`<tr class="evidence-click-row" onclick="openDrawer('${i.id}')">
+      <td><b>${esc(i.id)}</b><br><span class="small">${esc(i.title)}</span></td>
+      <td>${trainPills(i)}<div class="small">${(i.releases||[]).map(r=>esc(r)).join(', ')}</div></td>
+      <td>${badge(i.readiness,rkey(i.readiness))}<br>${badge(i.classification,ckey(i.classification))}</td>
+      <td>${esc(i.cost)} ${isCustomerImpact(i)?badge('priority input','customer'):''}</td>
+      <td class="open-hint">Open details</td>
+    </tr>`).join('')
+  }</tbody></table>` : `<div class="empty small">No initiatives in this evidence slice.</div>`
+}
+
+function openMetricDrawer(title, subtitle, list, filter='all'){
+  const filtered = filter==='customer' ? list.filter(isCustomerImpact)
+    : filter==='ready' ? list.filter(i=>statusGroup(i)==='ready')
+    : filter==='blocked' ? list.filter(i=>statusGroup(i)==='blocked')
+    : list;
+  const tile=(key,n,label)=>`<div class="evidence-metric drawer-filter ${filter===key?'active':''}" onclick="openMetricDrawer('${escapeAttr(title)}','${escapeAttr(subtitle||'')}',window.__drawerEvidence,'${key}')"><b>${n}</b><span>${esc(label)}</span></div>`;
+  window.__drawerEvidence=list;
+  document.getElementById('drawerContent').innerHTML =
+    `<h2>${esc(title)}</h2>
+     <p class="small">${esc(subtitle||'Supporting PRMs from the current dashboard data.')}</p>
+     <div class="evidence-row">
+       ${tile('all',list.length,'initiatives')}
+       ${tile('customer',list.filter(isCustomerImpact).length,'customer-impacting')}
+       ${tile('ready',list.filter(i=>statusGroup(i)==='ready').length,'ready')}
+       ${tile('blocked',list.filter(i=>statusGroup(i)==='blocked').length,'not ready')}
+     </div>
+     <p class="small" style="margin:10px 0 0">Showing ${filtered.length} of ${list.length}. Click a row to open PRM detail and child Epics.</p>
+     ${drawerRowsFromItems(filtered)}`;
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('backdrop').classList.add('open');
+}
+
+function evidenceMetric(n,label,title,subtitle,list){
+  const key='evidence_'+Math.random().toString(36).slice(2);
+  window[key]=list;
+  return `<div class="evidence-metric clickable" onclick="openMetricDrawer('${escapeAttr(title)}','${escapeAttr(subtitle)}',window['${key}'])"><b>${n}</b><span>${esc(label)}</span></div>`
+}
+
+function recommendationCard(config){
+  const all=idsForRelease(config.releaseId);
+  const ready=readyForRelease(config.releaseId);
+  const blocked=blockedForRelease(config.releaseId);
+  const customerAll=customerFor(all);
+  const evidenceList=config.evidence==='ready'?ready:config.evidence==='blocked'?blocked:config.evidence==='customer'?customerAll:all;
+
+  return `<div class="card decision-card">
+    <h3>${esc(config.title)}</h3>
+    <p class="small">${esc(config.why)}</p>
+
+    <div class="label">Evidence</div>
+    <div class="evidence-row">
+      ${evidenceMetric(all.length,'in release view',`${config.shortLabel}: all initiatives`,'Parent initiatives mapped to this release train.',all)}
+      ${evidenceMetric(ready.length,'ready if approved',`${config.shortLabel}: ready if approved`,'Items ready once release approval or sequencing clears.',ready)}
+      ${evidenceMetric(blocked.length,'not ready yet',`${config.shortLabel}: not ready yet`,'Items that need dependency or readiness resolution before scheduling.',blocked)}
+      ${evidenceMetric(customerAll.length,'customer-impacting',`${config.shortLabel}: customer-impacting`,'Items with customer, operational, revenue, compliance, or dependency impact.',customerAll)}
     </div>
-    <div class="drawer-meta" id="drawerMeta"></div>
-    <div class="drawer-table-wrap" id="drawerTableWrap"></div>
-  </aside>
 
-  <script>
-    const jiraBase = 'https://365retailmarkets.atlassian.net/browse/';
-    const confluenceBase = 'https://365retailmarkets.atlassian.net/wiki/spaces/PS/pages/';
-    const sourcePageUrl = confluenceBase + '6774751290/Mobile+Market+Q3+2026+Baseline+Source+Data';
+    <div class="label">Supporting PRMs</div>
+    <div class="evidence-row">${supportLinks(evidenceList)}</div>
 
-    const detailConfig = {
-      approvedEpics: {
-        title: 'Committed Baseline Epics',
-        rule: 'Target fixVersion MMv26.04.0 or MMv26.05.0. These are the committed baseline scope items.',
-        columns: [['jiraKey','Jira key'],['summary','Summary'],['parent','Parent initiative'],['fixVersion','fixVersion'],['devRom','Dev ROM'],['qaRom','QA ROM'],['status','Status']]
-      },
-      notIncluded: {
-        title: 'Not Included',
-        rule: 'Empty fixVersion at baseline. These are not committed Q3 scope unless later reviewed and approved.',
-        columns: [['jiraKey','Jira key'],['summary','Summary'],['parent','Parent initiative'],['status','Status'],['reason','Reason']]
-      },
-      reviewNeeded: {
-        title: 'Review Needed',
-        rule: 'Non-target fixVersion items. Current count is zero.',
-        columns: [['message','Message']]
-      },
-      standalone: {
-        title: 'Standalone Epic',
-        rule: 'Target fixVersion is present, but no parent Initiative is linked.',
-        columns: [['jiraKey','Jira key'],['summary','Summary'],['fixVersion','fixVersion'],['devRom','Dev ROM'],['qaRom','QA ROM'],['status','Status']]
-      },
-      capacity: {
-        title: 'Capacity Details',
-        rule: 'Epic ROM is used for Mobile Market / ART-scoped work. Parent Initiative ROM is treated as cross-team rollup.',
-        columns: [['release','Release'],['targetDate','Target date'],['devCapacity','Dev capacity'],['devRom','Dev ROM'],['devVariance','Dev variance'],['qaCapacity','QA capacity'],['qaRom','QA ROM'],['qaVariance','QA variance']]
-      },
-      initiativePRM508: {
-        title: 'PRM-508 · JWO / PicoAccess',
-        rule: 'Strong coverage. Direct Jira comments and Confluence PRD support RAID / DA promotion.',
-        columns: [['type','Type'],['entry','Entry'],['source','Source'],['evidenceStatus','Evidence status'],['jiraKey','Linked Jira']]
-      },
-      initiativePRM313: {
-        title: 'PRM-313 · Coke Swipe / Coke Code and Go',
-        rule: 'Strong coverage from 5/28 Technology Roadmap notes and committed baseline Epics.',
-        columns: [['type','Type'],['entry','Entry'],['source','Source'],['evidenceStatus','Evidence status'],['jiraKey','Linked Jira']]
-      },
-      initiativePRM160: {
-        title: 'PRM-160 · GS1 Datamatrix / Scan&Pay',
-        rule: 'Strong coverage from 5/28 Technology Roadmap notes and committed baseline Epic MM-88.',
-        columns: [['type','Type'],['entry','Entry'],['source','Source'],['evidenceStatus','Evidence status'],['jiraKey','Linked Jira']]
-      },
-      risks: {
-        title: 'Accepted Risks',
-        rule: 'Only source-backed risks are shown.',
-        columns: [['workItem','Work item'],['entry','Risk'],['source','Source'],['confidence','Confidence'],['jiraKey','Linked Jira']]
-      },
-      dependencies: {
-        title: 'Accepted Dependencies',
-        rule: 'Dependencies came from Jira comments, JWO PRD, and 5/28 Technology Roadmap notes.',
-        columns: [['workItem','Work item'],['entry','Dependency'],['source','Source'],['confidence','Confidence'],['jiraKey','Linked Jira']]
-      },
-      decisions: {
-        title: 'Accepted Decisions',
-        rule: 'Decision entries include scope boundary and governance-direction records.',
-        columns: [['workItem','Work item'],['entry','Decision'],['source','Source'],['confidence','Confidence'],['jiraKey','Linked Jira']]
-      },
-      actions: {
-        title: 'Accepted Actions',
-        rule: 'Action entries came from the 5/28 Technology Roadmap notes pasted by the PM.',
-        columns: [['workItem','Work item'],['entry','Action'],['source','Source'],['confidence','Confidence'],['jiraKey','Linked Jira']]
-      },
-      sources: {
-        title: 'Strong Sources',
-        rule: 'Readable or PM-pasted sources used as primary evidence.',
-        columns: [['sourceId','Source ID'],['title','Title'],['system','System'],['evidenceStatus','Evidence status'],['use','Use']]
-      },
-      sourceGaps: {
-        title: 'Documented Source Gaps',
-        rule: 'No RAID / DA entry was created from unreadable or weak sources unless the PM supplied evidence.',
-        columns: [['item','Item'],['reason','Reason'],['handling','Handling']]
-      }
-    };
+    <div class="label">Recommended action</div>
+    <p class="small">${esc(config.action)}</p>
 
-    const detailData = {
-      approvedEpics: [
-        {jiraKey:'MM-1452',summary:'JWO (PicoAccess) > Flow and UI/UX Changes',parent:'PRM-508',fixVersion:'MMv26.04.0',devRom:120,qaRom:106,status:'Intake Ready',jiraUrl:jiraBase+'MM-1452'},
-        {jiraKey:'MM-1250',summary:'Coke Swipe > Mobile Market > R3',parent:'PRM-313',fixVersion:'MMv26.05.0',devRom:80,qaRom:160,status:'Intake Ready',jiraUrl:jiraBase+'MM-1250'},
-        {jiraKey:'MM-1249',summary:'Coke Swipe > Mobile Market > R2',parent:'PRM-313',fixVersion:'MMv26.05.0',devRom:80,qaRom:160,status:'Intake Ready',jiraUrl:jiraBase+'MM-1249'},
-        {jiraKey:'MM-1183',summary:'MobileMarket/CV > Support Greek Translations',parent:'PRM-377',fixVersion:'MMv26.04.0',devRom:80,qaRom:50,status:'Intake Ready',jiraUrl:jiraBase+'MM-1183'},
-        {jiraKey:'MM-830',summary:'Coke Swipe > Mobile Market > R1',parent:'PRM-313',fixVersion:'MMv26.04.0',devRom:60,qaRom:42,status:'Intake Ready',jiraUrl:jiraBase+'MM-830'},
-        {jiraKey:'MM-829',summary:'Coke Swipe > Mobile Market > Proof of Concept and design',parent:'PRM-313',fixVersion:'MMv26.04.0',devRom:0,qaRom:0,status:'In Progress',jiraUrl:jiraBase+'MM-829'},
-        {jiraKey:'MM-300',summary:'MobileMarket > International Enablement of VisionLink',parent:'PRM-194',fixVersion:'MMv26.04.0',devRom:30,qaRom:200,status:'Intake Ready',jiraUrl:jiraBase+'MM-300'},
-        {jiraKey:'MM-88',summary:'MM > Enable GS1 Barcode Scans',parent:'PRM-160',fixVersion:'MMv26.05.0',devRom:120,qaRom:44,status:'Intake Ready',jiraUrl:jiraBase+'MM-88'},
-        {jiraKey:'MM-1308',summary:'Tokenization > S1U2 > MobileMarket',parent:'PRM-47',fixVersion:'MMv26.04.0',devRom:16,qaRom:40,status:'Intake Ready',jiraUrl:jiraBase+'MM-1308'},
-        {jiraKey:'MM-1043',summary:'MobileMarket > Device startup sync changes',parent:'Standalone',fixVersion:'MMv26.04.0',devRom:16,qaRom:8,status:'Intake Ready',jiraUrl:jiraBase+'MM-1043'},
-        {jiraKey:'MM-299',summary:'MobileMarket > Logic for temperature reporting',parent:'PRM-172',fixVersion:'MMv26.05.0',devRom:20,qaRom:12,status:'Intake Ready',jiraUrl:jiraBase+'MM-299'},
-        {jiraKey:'MM-220',summary:'PicoMarket 2.0 > LED Feature functionality',parent:'PRM-173',fixVersion:'MMv26.05.0',devRom:160,qaRom:70,status:'Intake Ready',jiraUrl:jiraBase+'MM-220'},
-        {jiraKey:'MM-23',summary:'PicoCoffee CA > Canada readiness validation',parent:'PRM-80',fixVersion:'MMv26.04.0',devRom:60,qaRom:30,status:'Ready For Dev',jiraUrl:jiraBase+'MM-23'},
-        {jiraKey:'MM-18',summary:'MobileMarket > UI-UX POS Method Room Charge',parent:'PRM-29',fixVersion:'MMv26.04.0',devRom:40,qaRom:24,status:'Ready For Dev',jiraUrl:jiraBase+'MM-18'},
-        {jiraKey:'MM-1312',summary:'Mobile Market KTLO for August - 26.05.0',parent:'PRM-167',fixVersion:'MMv26.05.0',devRom:50,qaRom:35,status:'Intake Ready',jiraUrl:jiraBase+'MM-1312'},
-        {jiraKey:'MM-1309',summary:'Mobile Market KTLO for July - 26.04.0',parent:'PRM-167',fixVersion:'MMv26.04.0',devRom:50,qaRom:35,status:'Intake Ready',jiraUrl:jiraBase+'MM-1309'}
-      ],
-      notIncluded: [
-        {jiraKey:'MM-1645',summary:'JWO Bad Debt/Restitution Flows Enablement',parent:'PRM-508',status:'ROM Estimate',reason:'Empty fixVersion',jiraUrl:jiraBase+'MM-1645'},
-        {jiraKey:'MM-1547',summary:'Coke Code and Go Solution Design',parent:'PRM-313',status:'High Level Design',reason:'Empty fixVersion',jiraUrl:jiraBase+'MM-1547'},
-        {jiraKey:'MM-1545',summary:'ADM Temperature Reporting Solution Design',parent:'PRM-172',status:'BACKLOG',reason:'Empty fixVersion',jiraUrl:jiraBase+'MM-1545'},
-        {jiraKey:'MM-1647',summary:'QBD/Pepsi PCV Validation',parent:'PRM-557',status:'ROM Estimate',reason:'Empty fixVersion',jiraUrl:jiraBase+'MM-1647'}
-      ],
-      reviewNeeded: [{message:'No Review Needed items. Non-target fixVersion count is 0.'}],
-      standalone: [{jiraKey:'MM-1043',summary:'MobileMarket > Device startup sync changes',fixVersion:'MMv26.04.0',devRom:16,qaRom:8,status:'Intake Ready',jiraUrl:jiraBase+'MM-1043'}],
-      capacity: [
-        {release:'MMv26.04.0 · July Release Candidate',targetDate:'2026-07-16',devCapacity:485,devRom:472,devVariance:'+13',qaCapacity:507,qaRom:535,qaVariance:'-28'},
-        {release:'MMv26.05.0 · August Release Candidate',targetDate:'2026-08-27',devCapacity:520,devRom:510,devVariance:'+10',qaCapacity:527,qaRom:481,qaVariance:'+46'},
-        {release:'Q3 total',targetDate:'-',devCapacity:1005,devRom:982,devVariance:'+23',qaCapacity:1034,qaRom:1016,qaVariance:'+18'}
-      ],
-      initiativePRM508: [
-        {type:'Assumption',entry:'MM work is UI/UX-focused; scope aligned and PRD available. Remaining alignment centers on Pico display and Amazon one-pager source of truth.',source:'5/28 Technology Roadmap Review + JWO PRD',evidenceStatus:'user_pasted_excerpt + direct_read',jiraKey:'MM-1452',jiraUrl:jiraBase+'MM-1452'},
-        {type:'Dependency',entry:'Mobile Market delivery depends on 365 API integration path rather than direct gate hardware interaction; Dev ROM reduced to 120h based on this assumption.',source:'Jira MM-1452 comment 1153762',evidenceStatus:'direct_read',jiraKey:'MM-1452',jiraUrl:jiraBase+'MM-1452'},
-        {type:'Risk',entry:'Gate hardware API/interface and JWO system API/interface unknowns created ROM and delivery uncertainty.',source:'Jira MM-1452 comment 1150255',evidenceStatus:'direct_read',jiraKey:'MM-1452',jiraUrl:jiraBase+'MM-1452'},
-        {type:'Decision',entry:'Amazon owns cameras, CV, gate hardware, cart generation, and store calibration; 365 owns catalog, payments, receipts, loyalty, reporting, and operator payout.',source:'JWO Engineering PRD',evidenceStatus:'direct_read',jiraKey:'PRM-508',jiraUrl:jiraBase+'PRM-508'}
-      ],
-      initiativePRM313: [
-        {type:'Dependency',entry:'August target remains assumption-based pending vendor discovery and integration planning.',source:'5/28 Technology Roadmap Review',evidenceStatus:'user_pasted_excerpt',jiraKey:'PRM-313',jiraUrl:jiraBase+'PRM-313'},
-        {type:'Action',entry:'Aakash to validate assumptions with Smita, Stephen, and Chad F. across data flow, source of truth, ADM handling, and vendor integration responsibilities.',source:'5/28 Technology Roadmap Review',evidenceStatus:'user_pasted_excerpt',jiraKey:'PRM-313',jiraUrl:jiraBase+'PRM-313'},
-        {type:'Action',entry:'Smita to set up the assumptions call and own the integration plan coming out of vendor discovery.',source:'5/28 Technology Roadmap Review',evidenceStatus:'user_pasted_excerpt',jiraKey:'PRM-313',jiraUrl:jiraBase+'PRM-313'}
-      ],
-      initiativePRM160: [
-        {type:'Dependency',entry:'GS1 delivery depends on Castles libraries / firmware update details and Kiosk pre-validation timing. Pico analysis exists; Kiosk assessment is still needed.',source:'5/28 Technology Roadmap Review',evidenceStatus:'user_pasted_excerpt',jiraKey:'MM-88',jiraUrl:jiraBase+'MM-88'},
-        {type:'Action',entry:'Stephen to send Michael the open Castles request details, including libraries / firmware update needed for testing.',source:'5/28 Technology Roadmap Review',evidenceStatus:'user_pasted_excerpt',jiraKey:'PRM-160',jiraUrl:jiraBase+'PRM-160'},
-        {type:'Action',entry:'Aakash to confirm when Kiosk testing / pre-validation can happen after the Castles dependency is clarified.',source:'5/28 Technology Roadmap Review',evidenceStatus:'user_pasted_excerpt',jiraKey:'PRM-160',jiraUrl:jiraBase+'PRM-160'},
-        {type:'Risk',entry:'If scanner or hardware limitations block support, GS1 may become a non-starter for Kiosk/Pico support.',source:'5/28 Technology Roadmap Review',evidenceStatus:'user_pasted_excerpt',jiraKey:'MM-88',jiraUrl:jiraBase+'MM-88'}
-      ],
-      risks: [
-        {workItem:'PRM-508 / MM-1452',entry:'Integration unknowns around gate hardware API/interface and JWO system API/interface created ROM and delivery uncertainty.',source:'Jira MM-1452 comment 1150255',confidence:'High',jiraKey:'MM-1452',jiraUrl:jiraBase+'MM-1452'},
-        {workItem:'PRM-160 / MM-88',entry:'If scanner or hardware limitations block support, GS1 may become a non-starter for Kiosk/Pico support.',source:'5/28 Technology Roadmap Review',confidence:'Medium-High',jiraKey:'MM-88',jiraUrl:jiraBase+'MM-88'},
-        {workItem:'July QA capacity',entry:'July QA is over capacity by 28 hours.',source:'Capacity snapshot',confidence:'High',jiraKey:'MMv26.04.0',jiraUrl:sourcePageUrl}
-      ],
-      dependencies: [
-        {workItem:'PRM-508 / MM-1452',entry:'Mobile Market delivery depends on the 365 API integration path rather than direct gate hardware interaction.',source:'Jira MM-1452 comment 1153762',confidence:'High',jiraKey:'MM-1452',jiraUrl:jiraBase+'MM-1452'},
-        {workItem:'PRM-508 / MM-1452',entry:'QA scope includes Pico testing, third-party hardware/software integration, and ADM testing.',source:'Jira MM-1452 comment 1150158',confidence:'High',jiraKey:'MM-1452',jiraUrl:jiraBase+'MM-1452'},
-        {workItem:'PRM-313',entry:'August target remains assumption-based pending vendor discovery and integration planning.',source:'5/28 Technology Roadmap Review',confidence:'High',jiraKey:'PRM-313',jiraUrl:jiraBase+'PRM-313'},
-        {workItem:'PRM-160',entry:'GS1 delivery depends on Castles libraries / firmware update details and Kiosk pre-validation timing.',source:'5/28 Technology Roadmap Review',confidence:'High',jiraKey:'PRM-160',jiraUrl:jiraBase+'PRM-160'},
-        {workItem:'PRM-376',entry:'ESL implementation start is not confirmed; vendor call needed to validate access points, API limitations, local vs cloud assumptions, and Kiosk/MM impact.',source:'5/28 Technology Roadmap Review',confidence:'Medium',jiraKey:'PRM-376',jiraUrl:jiraBase+'PRM-376'},
-        {workItem:'DIN-1248',entry:'Any limited-client release decision should route through the new release approval process.',source:'5/28 Technology Roadmap Review',confidence:'Medium',jiraKey:'DIN-1248',jiraUrl:jiraBase+'DIN-1248'}
-      ],
-      decisions: [
-        {workItem:'PRM-508',entry:'Amazon owns cameras, CV, gate hardware, cart generation, and store calibration; 365 owns catalog, payments, receipts, loyalty, reporting, and operator payout.',source:'JWO Engineering PRD',confidence:'High',jiraKey:'PRM-508',jiraUrl:jiraBase+'PRM-508'},
-        {workItem:'PRM-376',entry:'ESL remains in implementation readiness review; ROM should not be treated as full-project estimate because it is team-specific and date remains to be confirmed.',source:'5/28 Technology Roadmap Review',confidence:'Medium',jiraKey:'PRM-376',jiraUrl:jiraBase+'PRM-376'},
-        {workItem:'Release governance / Mobile Apps',entry:'MAPP June release should be treated as Mobile Apps release-candidate readiness, not single-project release handling.',source:'5/28 Technology Roadmap Review',confidence:'Medium',jiraKey:'MAPP',jiraUrl:sourcePageUrl},
-        {workItem:'Baseline lifecycle',entry:'Child page is approved / validated; parent Last updated remains blocked until iframe embed is confirmed.',source:'Workflow gate',confidence:'High',jiraKey:'Source page',jiraUrl:sourcePageUrl}
-      ],
-      actions: [
-        {workItem:'PRM-313',entry:'Aakash to validate assumptions with Smita, Stephen, and Chad F.',source:'5/28 Technology Roadmap Review',confidence:'High',jiraKey:'PRM-313',jiraUrl:jiraBase+'PRM-313'},
-        {workItem:'PRM-313',entry:'Smita to set up the assumptions call and own the integration plan coming out of vendor discovery.',source:'5/28 Technology Roadmap Review',confidence:'High',jiraKey:'PRM-313',jiraUrl:jiraBase+'PRM-313'},
-        {workItem:'PRM-160',entry:'Stephen to send Michael the open Castles request details.',source:'5/28 Technology Roadmap Review',confidence:'High',jiraKey:'PRM-160',jiraUrl:jiraBase+'PRM-160'},
-        {workItem:'PRM-160',entry:'Aakash to confirm when Kiosk testing / pre-validation can happen.',source:'5/28 Technology Roadmap Review',confidence:'High',jiraKey:'PRM-160',jiraUrl:jiraBase+'PRM-160'},
-        {workItem:'HTML dashboard handoff',entry:'Host HTML, obtain iframe-ready link, embed in Confluence, and confirm render before parent date stamp.',source:'Workflow gate',confidence:'High',jiraKey:'Parent page',jiraUrl:confluenceBase+'6776160257/Executive+Summary+Mobile+Market+Q3+2026+Plan_Draft+1'}
-      ],
-      sources: [
-        {sourceId:'S1',title:'Jira MM-1452 issue and comments',system:'Jira',evidenceStatus:'direct_read',use:'PRM-508 scope, assumptions, dependencies, ROM changes'},
-        {sourceId:'S2',title:'JWO Engineering PRD',system:'Confluence',evidenceStatus:'direct_read',use:'PRM-508 ownership boundary'},
-        {sourceId:'S4',title:'5/28 Technology Roadmap Review',system:'Outlook + PM paste',evidenceStatus:'direct_read_partial_body + user_pasted_excerpt',use:'PRM-508, PRM-313, PRM-160, PRM-376'},
-        {sourceId:'S6',title:'5/4 Markets/CV/Payments Spotlight',system:'Confluence',evidenceStatus:'direct_read',use:'Action-table source behavior tested'}
-      ],
-      sourceGaps: [
-        {item:'Teams chat / recap links',reason:'Connector could not open link or recording was too large.',handling:'Not promoted'},
-        {item:'Loop files',reason:'Resolved to .loop but content could not be extracted.',handling:'Not promoted unless PM pastes excerpt'},
-        {item:'PRD gaps',reason:'No clean standalone PRD found for all initiatives.',handling:'Accepted by PM; no PRD-based entries added'},
-        {item:'PRM-377 / PRM-194 / PRM-173 / PRM-80 / PRM-29 / PRM-167 / MM-1043',reason:'Jira baseline only; no current-state source evidence.',handling:'No RAID / DA proposed'}
-      ]
-    };
+    <div class="label">Condition to schedule</div>
+    <p class="small">${esc(config.condition)}</p>
 
-    function renderCell(row, key) {
-      const value = row[key];
-      if (key === 'jiraKey' || key === 'linkedJira') {
-        const text = value || row.jiraKey || '';
-        const url = row.jiraUrl || (text && text.includes('-') ? jiraBase + text : sourcePageUrl);
-        return '<a class="jira-link" href="' + url + '" target="_blank" rel="noopener">' + escapeHtml(text) + '</a>';
-      }
-      if (value === null || value === undefined) return '—';
-      return escapeHtml(String(value));
+    <div class="evidence-row">
+      <button class="chip" onclick="openEvidence('${config.releaseId}')">Open release view</button>
+      <button class="chip" onclick="openEvidence('${config.releaseId}','yes')">Open customer-impact view</button>
+    </div>
+  </div>`
+}
+
+function renderDecisionView(list,base,ready,blocked){
+  const admReady=readyForRelease('ADM_API');
+  const mappReady=readyForRelease('MAPP');
+  const mmBlocked=blockedForRelease('MM');
+  const kioBlocked=blockedForRelease('KIO');
+  const cvBlocked=blockedForRelease('CV');
+
+  document.getElementById('decisionHero').innerHTML =
+    `<h2>Recommended release sequencing</h2>
+     <p>Use this view as the leadership decision narrative. The sequence separates work that can move through approval now from work that needs regression, hotfix, or readiness blockers cleared before scheduling.</p>
+     <div class="evidence-row">
+       ${evidenceMetric(admReady.length,'ADM/API ready','ADM/API ready evidence','Items that appear ready if ADMv26.04 / APIv26.04 approval is cleared.',admReady)}
+       ${evidenceMetric(mappReady.length,'MAPP ready','MAPP ready evidence','Items that appear ready if MAPPvX.2603.0 approval is cleared.',mappReady)}
+       ${evidenceMetric(mmBlocked.length,'MM blockers','MobileMarket blocker evidence','Items tied to MMv26.02 / MMv26.03 that still need readiness blockers cleared before scheduling.',mmBlocked)}
+       ${evidenceMetric(kioBlocked.length,'KIO blockers','Kiosk blocker evidence','Items tied to the KIO path where hotfix, regression, or other blockers still constrain scheduling.',kioBlocked)}
+       ${evidenceMetric(cvBlocked.length,'CV blockers','CV blocker evidence','Items tied to the CV path where regression, CR, resource, or validation blockers still constrain scheduling.',cvBlocked)}
+     </div>`;
+
+  const cards=[
+    {
+      releaseId:'ADM_API',
+      shortLabel:'ADM/API',
+      title:'1. Clear ADMv26.04 and APIv26.04 first',
+      why:'This should remain first in scheduling because it clears the server-side path that dependent work needs. A tentative Thursday deployment path is in motion, assuming regression passes. QA is confirming regression status while the team works through the approval checklist. The mixed-risk initiatives do not need to block the server-side deployment; they should be treated as go-live exceptions because the full initiative value depends on MobileMarket or additional readiness work.',
+      evidence:'ready',
+      action:'Proceed with ADMv26.04 and APIv26.04 approval and sequencing for the tentative Thursday deployment path, contingent on regression passing and the approval checklist completing. Use the release to clear server-side dependencies even where the full initiative remains gated by MobileMarket or other readiness work.',
+      condition:'Treat the not-ready rows as explicit exceptions: deploy the server-side dependency where approved, but do not communicate the full initiative as live until the MobileMarket dependency, regression, or CR path is cleared. Split or rebaseline any item that cannot meet the Thursday release path.',
+      blockedEvidenceNote:'These initiatives have ADM/API work in the release path, but the full initiative is not ready to go live because MobileMarket, regression, or CR readiness still needs to clear. They should not block the server-side deployment if the release checklist and regression pass.'
+    },
+    {
+      releaseId:'MAPP',
+      shortLabel:'MAPP',
+      title:'2. Proceed with MAPPvX.2603.0 approval in parallel',
+      why:'The MAPP path has a strong ready signal and should not wait behind MM or KIO work that still needs blocker resolution. Several MAPP items are release-blocked and ready to proceed through the approval process.',
+      evidence:'ready',
+      action:'Proceed with MAPPvX.2603.0 approval and CR checklist completion. Coordinate timing with ADM/API where app items depend on server-side readiness.',
+      condition:'Schedule MAPP with the server-side approval path where dependencies exist; otherwise keep ready app-side work moving.'
+    },
+    {
+      releaseId:'MM',
+      shortLabel:'MobileMarket',
+      title:'3. Prepare the MMv26.02 / MMv26.03 joint RC after regression clears',
+      why:'MobileMarket has broad customer and operational exposure, but regression and readiness blockers need to be addressed before the joint release candidate should be scheduled.',
+      evidence:'blocked',
+      action:'Confirm the remaining regression plan, owner, and completion date. Schedule the combined MMv26.02 / MMv26.03 release candidate once readiness evidence is available.',
+      condition:'Do not schedule the MM joint RC until regression, CR, commercial setup, and customer-decision blockers are resolved or explicitly accepted.'
+    },
+    {
+      releaseId:'KIO',
+      shortLabel:'Kiosk',
+      title:'4. Resolve KIO hotfix timing before combined RC scheduling',
+      why:'KIO should be treated as a blocker-clearing path first. Hotfix timing, regression, incomplete feature testing, and resource constraints need resolution before the KIOv26.02 / KIOv26.03 combined RC can be scheduled.',
+      evidence:'blocked',
+      action:'Confirm hotfix timing first. Assess the KIOv26.02 / KIOv26.03 combined RC timing against regression capacity and remaining validation work.',
+      condition:'Do not position KIO as ready for release scheduling until hotfix timing and regression capacity are confirmed.'
+    },
+    {
+      releaseId:'CV',
+      shortLabel:'CV',
+      title:'5. Keep CV visible as a blocker-clearing path',
+      why:'CV has customer and operational exposure, but the current release-train view is not approval-ready. The work still depends on regression, CR approval, resource availability, or validation readiness.',
+      evidence:'blocked',
+      action:'Track CV separately from MM and KIO. Confirm regression status, CR approval path, and resource availability before adding CV work to a release commitment.',
+      condition:'Do not schedule CV work until the validation or resource blocker is cleared, or the risk is explicitly accepted.'
     }
+  ].map(recommendationCard).join('');
 
-    function escapeHtml(str) {
-      return str.replace(/[&<>"']/g, function(ch) {
-        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]);
-      });
-    }
-
-    function openDrawer(key) {
-      const config = detailConfig[key];
-      const rows = detailData[key] || [];
-      if (!config) return;
-
-      document.getElementById('drawerTitle').textContent = config.title;
-      document.getElementById('drawerSubtitle').textContent = config.rule;
-
-      const meta = document.getElementById('drawerMeta');
-      meta.innerHTML = [
-        '<div class="drawer-meta-item">Record count<strong>' + rows.length + '</strong></div>',
-        '<div class="drawer-meta-item">Source page<strong><a class="jira-link" href="' + sourcePageUrl + '" target="_blank" rel="noopener">Validated child page</a></strong></div>',
-        '<div class="drawer-meta-item">Evidence rule<strong>No source, no RAID / DA</strong></div>'
-      ].join('');
-
-      const tableWrap = document.getElementById('drawerTableWrap');
-      const headers = config.columns.map(c => '<th>' + escapeHtml(c[1]) + '</th>').join('');
-      const body = rows.map(row => '<tr>' + config.columns.map(c => '<td>' + renderCell(row, c[0]) + '</td>').join('') + '</tr>').join('');
-      tableWrap.innerHTML = '<table><thead><tr>' + headers + '</tr></thead><tbody>' + body + '</tbody></table>';
-
-      document.getElementById('detailBackdrop').classList.add('active');
-      document.getElementById('detailDrawer').classList.add('active');
-      document.getElementById('detailDrawer').setAttribute('aria-hidden', 'false');
-    }
-
-    function closeDrawer() {
-      document.getElementById('detailBackdrop').classList.remove('active');
-      document.getElementById('detailDrawer').classList.remove('active');
-      document.getElementById('detailDrawer').setAttribute('aria-hidden', 'true');
-    }
-
-    document.querySelectorAll('[data-detail-key]').forEach(el => {
-      el.addEventListener('click', () => openDrawer(el.getAttribute('data-detail-key')));
-      el.addEventListener('keydown', event => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          openDrawer(el.getAttribute('data-detail-key'));
-        }
-      });
-    });
-
-    document.querySelectorAll('.tab-button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(btn.getAttribute('data-tab')).classList.add('active');
-      });
-    });
-
-    document.getElementById('drawerClose').addEventListener('click', closeDrawer);
-    document.getElementById('detailBackdrop').addEventListener('click', closeDrawer);
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') closeDrawer();
-    });
-  </script>
-</body>
-</html>
+  document.getElementById('decisionGrid').innerHTML=cards;
+}
+function renderNav(){document.getElementById('releaseNav').innerHTML=releaseLanes.map(l=>`<button data-lane="${l.id}" class="release-btn ${activeRelease===l.id?'active':''}" onclick="setRelease('${l.id}')"><span class="title"><span class=\"name-wrap\"><span>${esc(l.label)}</span></span><span class="count-bubble">${releaseCount(l)}</span></span><span class="sub">${esc(l.sub)}</span></button>`).join('')}
+function renderMetrics(){const base=laneBase();const counts={yes:0,no:0,unknown:0};base.forEach(i=>{counts[impactBucket(i)]++});const metrics=[['Total in scope',base.length,'','Current release train / active search'],['Customer impact: Yes',counts.yes,'yes','Prioritize in sequencing'],['Customer impact: No / low',counts.no,'no','Lower impact exposure'],['Impact unknown',counts.unknown,'unknown','Confirm before final readout']];document.getElementById('metrics').innerHTML=metrics.map((m,idx)=>{let active=(impactFilter===m[2]&&m[2]);let click=idx===0?'clearFilters()':`setImpact('${m[2]}')`;return `<div class="card metric${active?' active':''}" onclick="${click}"><div class="n">${m[1]}</div><div class="l">${m[0]}</div><div class="s">${m[3]}</div></div>`}).join('')}
+function contextCopy(lane){if(lane.id==='all')return['Full release-scope list','Use release train navigation, optional impact filters, and global search to isolate sequencing decisions.'];if(lane.id==='ADM_API')return['ADM / API release dependency','If ADMv26.04 or APIv26.04 is approved, this view shows what can move now and what still needs readiness work.'];if(lane.id==='MM')return['MobileMarket joint release candidate','Shows what is tied to MMv26.02 pause and MMv26.03 rebaseline pending a combined RC.'];if(lane.id==='KIO')return['Kiosk release constraints','Shows work affected by KIO hotfix timing, KIOv26.03 path, regression, and incomplete work.'];if(lane.id==='CV')return['CV release path','Shows CV Store, CV WebApp, and CV App exposure separately.'];if(lane.id==='MAPP')return['Mobile App release path','Shows MAPPvX.2603.0 app-side exposure and what can move once the app path is approved.'];return['Release train','Review readiness and blockers for this release path.']}
+function card(i){return `<div class="card project ${ckey(i.classification)}" onclick="openDrawer('${i.id}')"><h4>${esc(i.id)} — ${esc(i.title)}</h4>${trainPills(i)}<div>${badge(i.classification,ckey(i.classification))} ${badge('Ready: '+i.readiness,rkey(i.readiness))} ${isCustomerImpact(i)?badge('Customer impact','customer'):''}</div></div>`}
+function childSection(i){const kids=childrenByParent[i.id]||[];
+ if(!kids.length){return `<div class="child-box"><h4>Child Epics / release items</h4><div class="child-empty small">No child Epic records loaded for this parent in the current dataset.</div><div class="small" style="margin-top:8px">Parent release tags currently indexed: ${(i.releases||[]).map(r=>badge(r)).join('')}</div></div>`}
+ return `<div class="child-box"><h4>Child Epics / release items <span class="lane-count">${kids.length}</span></h4><table class="child-table"><thead><tr><th>Epic</th><th>Summary</th><th>Status</th><th>Fix version</th><th>Due date</th><th>Project</th></tr></thead><tbody>${kids.map(k=>`<tr><td><a href="https://365retailmarkets.atlassian.net/browse/${esc(k.key)}" target="_blank">${esc(k.key)}</a></td><td>${esc(k.summary)}</td><td>${badge(k.status||'')}</td><td>${(k.fixVersions||[]).map(r=>badge(r)).join('')}</td><td>${esc(k.dueDate||'')}</td><td>${esc(k.project||'')}</td></tr>`).join('')}</tbody></table></div>`
+}
+function toggleChildren(id){const row=document.getElementById('children-'+id);const chev=document.getElementById('chev-'+id);if(!row)return;const open=row.classList.toggle('open');if(chev)chev.textContent=open?'▾':'▸'}
+function render(){renderNav();renderMetrics();const lane=releaseLanes.find(l=>l.id===activeRelease);const ctx=contextCopy(lane);const base=laneBase();const list=filteredList();const ready=list.filter(i=>statusGroup(i)==='ready');const blocked=list.filter(i=>statusGroup(i)==='blocked');document.getElementById('boardTab').classList.toggle('active',activeMode==='board');document.getElementById('decisionTab').classList.toggle('active',activeMode==='decision');document.getElementById('boardView').style.display=activeMode==='board'?'grid':'none';document.getElementById('decisionView').classList.toggle('open',activeMode==='decision');document.getElementById('contextPanel').innerHTML=`<h2>${esc(ctx[0])}</h2><p>${esc(ctx[1])}</p><div class="filter-state">${badge('Showing '+list.length+' of '+base.length)}${impactFilter?badge('Customer impact: '+impactLabel(impactFilter)):badge('Impact filter: off')}</div>`;document.getElementById('readyCount').textContent=ready.length;document.getElementById('blockedCount').textContent=blocked.length;document.getElementById('readyLane').innerHTML=ready.map(card).join('')||'<div class="empty small">No initiatives in this lane.</div>';document.getElementById('blockedLane').innerHTML=blocked.map(card).join('')||'<div class="empty small">No initiatives in this lane.</div>';document.getElementById('totalTable').innerHTML=list.map(i=>`<tr><td class="expand-cell" onclick="toggleChildren('${i.id}')"><span class="chev" id="chev-${i.id}">▸</span></td><td onclick="toggleChildren('${i.id}')">${i.url?`<a href="${i.url}" target="_blank" onclick="event.stopPropagation()"><b>${esc(i.id)}</b></a>`:`<b>${esc(i.id)}</b>`}<br><span class="small">${esc(i.title)}</span></td><td onclick="toggleChildren('${i.id}')">${trainPills(i)}<div class="small">${(i.releases||[]).map(r=>esc(r)).join(', ')}</div></td><td onclick="toggleChildren('${i.id}')">${badge(i.readiness,rkey(i.readiness))}</td><td onclick="toggleChildren('${i.id}')">${badge(i.classification,ckey(i.classification))}</td><td onclick="toggleChildren('${i.id}')">${esc(i.cost)} ${isCustomerImpact(i)?badge('priority input','customer'):''}</td><td><button class="details-btn" onclick="event.stopPropagation();openDrawer('${i.id}')">Details</button></td></tr><tr class="child-row" id="children-${i.id}"><td></td><td colspan="6">${childSection(i)}</td></tr>`).join('');renderDecisionView(list,base,ready,blocked)}
+function drawerChildSection(i){return childSection(i)}
+function openDrawer(id){const i=items.find(x=>x.id===id);if(!i)return;document.getElementById('drawerContent').innerHTML=`<h2>${i.url?`<a href="${i.url}" target="_blank">${esc(i.id)}</a>`:esc(i.id)} — ${esc(i.title)}</h2><p class="small">${esc(i.roadmap)}</p><div>${badge(i.classification,ckey(i.classification))} ${badge('Ready: '+i.readiness,rkey(i.readiness))} ${isCustomerImpact(i)?badge('Customer impact','customer'):''}</div><div class=\"field\"><b>Release train</b>${trainPills(i)}</div><div class="field"><b>Release / build vehicle</b>${(i.releases||[]).map(r=>badge(r)).join('')}</div><div class="field"><b>What must clear before this can ship?</b>${(i.blockers||[]).map(b=>badge(b,b.includes('Pending')?'need':'')).join('')}</div><div class="field"><b>Cost of delay</b>${esc(i.cost)}</div><div class="field"><b>Next action</b>${esc(i.action)}</div><div class="field"><b>Context used</b>${esc(i.notes)}</div><div class="field"><b>Leadership implication</b>${implication(i)}</div><div class="field">${drawerChildSection(i)}</div>`;document.getElementById('drawer').classList.add('open');document.getElementById('backdrop').classList.add('open')}
+function implication(i){
+ if(statusGroup(i)==='ready')return'Candidate to move when this release path is approved or sequenced.';
+ if(i.classification==='Mixed release-delivery risk' && (i.releases||[]).some(r=>r.includes('ADMv26.04')||r.includes('APIv26.04')) && (i.releases||[]).some(r=>r.includes('MMv26.02')||r.includes('MMv26.03'))) return 'Server-side deployment may clear part of the dependency path, but the initiative should not be treated as live until the MobileMarket dependency and readiness blockers are cleared.';
+ if(i.classification==='Mixed release-delivery risk')return'Release approval helps, but readiness or capacity action is still required before shipment.';
+ if(i.classification==='Non-release schedule risk')return'Handle through rebaseline, technical alignment, vendor/customer action, or standard CR path.';
+ return'Keep visible, but validate the release dependency before using it for sequencing.';
+}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('backdrop').classList.remove('open')}
+render();
+</script></body></html>
