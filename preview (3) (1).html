@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mobile Market Q3 2026 Executive Summary</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --card: #ffffff;
+      --ink: #172033;
+      --muted: #647086;
+      --line: #d9dee8;
+      --soft-line: #edf0f5;
+      --blue: #1f5eff;
+      --blue-soft: #e8efff;
+      --green: #1f8a4c;
+      --green-soft: #e7f6ed;
+      --amber: #a05a00;
+      --amber-soft: #fff1d6;
+      --red: #b42318;
+      --red-soft: #fee4e2;
+      --purple: #6a3fb5;
+      --purple-soft: #efe8ff;
+      --shadow: 0 8px 24px rgba(23, 32, 51, 0.08);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.45;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      font-size: 28px;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 760px;
+      margin-bottom: 0;
+    }
+
+    .meta {
+      text-align: right;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .mode-tabs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin: 18px 0;
+      background: #e8ebf1;
+      border: 1px solid var(--line);
+      padding: 6px;
+      border-radius: 14px;
+    }
+
+    .tab-button {
+      appearance: none;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--muted);
+      padding: 11px 12px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .tab-button.active {
+      background: var(--card);
+      color: var(--ink);
+      box-shadow: 0 2px 8px rgba(23, 32, 51, 0.08);
+    }
+
+    .view { display: none; }
+    .view.active { display: block; }
+
+    .grid { display: grid; gap: 14px; }
+    .grid.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .card.tight { padding: 14px; }
+
+    .section-title {
+      font-size: 16px;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .metric-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    .metric-value {
+      font-size: 25px;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .metric-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .badge.green { color: var(--green); background: var(--green-soft); border-color: #b7e4c7; }
+    .badge.amber { color: var(--amber); background: var(--amber-soft); border-color: #ffd796; }
+    .badge.red { color: var(--red); background: var(--red-soft); border-color: #fecdca; }
+    .badge.blue { color: #214fb8; background: var(--blue-soft); border-color: #c6d7ff; }
+    .badge.purple { color: var(--purple); background: var(--purple-soft); border-color: #d9c9ff; }
+    .badge.gray { color: #475467; background: #f2f4f7; border-color: #d0d5dd; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .release-story {
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .release-story strong { font-weight: 800; }
+
+    .readout-box {
+      border-radius: 14px;
+      background: var(--amber-soft);
+      border: 1px solid #ffd796;
+      padding: 14px;
+    }
+
+    .readout-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .readout-title h2 {
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .readout-body {
+      color: #4a2c00;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .bar-wrap { margin-top: 12px; }
+
+    .bar-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .bar-bg {
+      height: 12px;
+      border-radius: 999px;
+      background: #e8ebf1;
+      overflow: hidden;
+      border: 1px solid #dce1ea;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #7aa7ff, #1f5eff);
+    }
+
+    .bar-fill.amber { background: linear-gradient(90deg, #ffd796, #f79009); }
+    .bar-fill.green { background: linear-gradient(90deg, #85e0a3, #1f8a4c); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th {
+      text-align: left;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 9px 8px;
+      border-bottom: 1px solid var(--line);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--soft-line);
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .muted { color: var(--muted); }
+    .nowrap { white-space: nowrap; }
+
+    .decision-card {
+      border-left: 4px solid var(--amber);
+      background: #fffbf2;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-top: 1px solid #ffe4ad;
+      border-right: 1px solid #ffe4ad;
+      border-bottom: 1px solid #ffe4ad;
+    }
+
+    .decision-card h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .decision-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 12px;
+    }
+
+    .mini-label {
+      color: var(--muted);
+      display: block;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .signal-row {
+      display: grid;
+      grid-template-columns: 92px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--soft-line);
+      font-size: 13px;
+    }
+
+    .signal-row:last-child { border-bottom: none; }
+
+    .footer-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .source-ledger {
+      background: #fbfcfe;
+      border: 1px dashed #b8c0cc;
+      border-radius: 14px;
+      padding: 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .source-ledger-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .ledger-item {
+      background: #ffffff;
+      border: 1px solid var(--soft-line);
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .ledger-item strong {
+      display: block;
+      color: var(--ink);
+      margin-top: 2px;
+    }
+
+    .phase-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .iframe-note {
+      margin-top: 16px;
+      background: #eef4ff;
+      border: 1px solid #c6d7ff;
+      border-radius: 14px;
+      padding: 12px;
+      font-size: 12px;
+      color: #214fb8;
+    }
+
+    .clickable-card,
+    .clickable-row,
+    .clickable-badge,
+    .clickable-signal,
+    .clickable-decision {
+      cursor: pointer;
+    }
+
+    .clickable-card,
+    .clickable-row,
+    .clickable-signal,
+    .clickable-decision,
+    .clickable-badge {
+      transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease, background 150ms ease;
+    }
+
+    .clickable-card:hover,
+    .clickable-card:focus,
+    .clickable-row:hover,
+    .clickable-signal:hover,
+    .clickable-decision:hover {
+      border-color: var(--blue);
+      box-shadow: 0 10px 28px rgba(23, 32, 51, 0.12);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .clickable-badge:hover {
+      filter: brightness(0.98);
+      box-shadow: 0 2px 8px rgba(23, 32, 51, 0.12);
+    }
+
+    .clickable-row:hover td {
+      background: #fbfcff;
+    }
+
+    .click-hint {
+      color: #214fb8;
+      font-weight: 700;
+    }
+
+    .detail-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(23, 32, 51, 0.28);
+      display: none;
+      z-index: 20;
+    }
+
+    .detail-backdrop.active { display: block; }
+
+    .detail-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(860px, 94vw);
+      height: 100vh;
+      background: var(--card);
+      border-left: 1px solid var(--line);
+      box-shadow: -12px 0 32px rgba(23, 32, 51, 0.18);
+      padding: 20px;
+      overflow: auto;
+      transform: translateX(100%);
+      transition: transform 160ms ease;
+      z-index: 21;
+    }
+
+    .detail-drawer.active { transform: translateX(0); }
+
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 14px;
+    }
+
+    .drawer-title {
+      margin: 0 0 6px;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    .drawer-subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .drawer-close {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--ink);
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .drawer-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .drawer-meta-item {
+      background: #fbfcfe;
+      border: 1px solid var(--soft-line);
+      border-radius: 12px;
+      padding: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .drawer-meta-item strong {
+      display: block;
+      color: var(--ink);
+      margin-top: 3px;
+    }
+
+    .drawer-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    .drawer-table-wrap table {
+      min-width: 760px;
+      background: white;
+    }
+
+    .jira-link {
+      color: var(--blue);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .jira-link:hover { text-decoration: underline; }
+
+    .validation-ok { color: var(--green); font-weight: 800; }
+    .validation-warning { color: var(--red); font-weight: 800; }
+
+    @media (max-width: 920px) {
+      .hero, .grid.cols-4, .grid.cols-3, .grid.cols-2, .source-ledger-grid, .drawer-meta { grid-template-columns: 1fr; }
+      .topbar { display: block; }
+      .meta { text-align: left; margin-top: 12px; }
+      .decision-meta { grid-template-columns: 1fr; }
+      .signal-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div>
+        <h1>Mobile Market Q3 Executive Summary</h1>
+        <p class="subtitle">Approved baseline and source-backed delivery signals for Mobile Market ART. Click any count, tag, or signal to see the supporting work items, evidence status, and Jira links.</p>
+      </div>
+      <div class="meta">
+        <div><strong>Baseline status:</strong> Approved / validated</div>
+        <div><strong>Approval date:</strong> May 31, 2026</div>
+        <div><strong>Parent finalization:</strong> iframe pending</div>
+      </div>
+    </header>
+
+    <nav class="mode-tabs" aria-label="Executive summary mode selector">
+      <button class="tab-button active" data-tab="baseline">Baseline Report</button>
+      <button class="tab-button" data-tab="signals">Signal Tracker</button>
+    </nav>
+
+    <section id="baseline" class="view active">
+      <div class="phase-label">Baseline view · approved plan</div>
+      <section class="hero">
+        <article class="card">
+          <h2 class="section-title">1. Executive Readout</h2>
+          <p class="release-story"><strong>Mobile Market Q3 is approved as a 16-Epic baseline</strong> across two release candidates. The plan is within Q3 total capacity, but <strong>July QA is over by 28 hours</strong>, so release-level sequencing is the main constraint.</p>
+          <div class="badge-row">
+            <span class="badge green">Approved / validated</span>
+            <span class="badge amber clickable-badge" data-detail-key="capacity">July QA -28h</span>
+            <span class="badge blue clickable-badge" data-detail-key="approvedEpics">16 committed epics</span>
+            <span class="badge gray clickable-badge" data-detail-key="sourceGaps">Documented source gaps</span>
+          </div>
+        </article>
+        <aside class="readout-box">
+          <div class="readout-title"><h2>Leadership readout</h2><span class="badge amber">Watch</span></div>
+          <p class="readout-body">The baseline is approved. The steering focus is not total Q3 capacity; it is July QA pressure, Coke Swipe integration assumptions, GS1 Castles dependency, and JWO API path alignment.</p>
+        </aside>
+      </section>
+
+      <section class="grid cols-4" style="margin-top:14px;">
+        <article class="card tight clickable-card" tabindex="0" data-detail-key="approvedEpics"><div class="metric-label">Committed scope</div><div class="metric-value">16</div><div class="metric-note"><span class="click-hint">Click for Jira-linked epics</span></div></article>
+        <article class="card tight clickable-card" tabindex="0" data-detail-key="notIncluded"><div class="metric-label">Not included</div><div class="metric-value">4</div><div class="metric-note">Empty fixVersion at baseline</div></article>
+        <article class="card tight clickable-card" tabindex="0" data-detail-key="reviewNeeded"><div class="metric-label">Review needed</div><div class="metric-value">0</div><div class="metric-note">No non-target fixVersions</div></article>
+        <article class="card tight clickable-card" tabindex="0" data-detail-key="standalone"><div class="metric-label">Standalone epic</div><div class="metric-value">1</div><div class="metric-note">Target fixVersion, no parent</div></article>
+      </section>
+
+      <section class="grid cols-2" style="margin-top:14px;">
+        <article class="card">
+          <h2 class="section-title">2. Capacity vs ROM</h2>
+          <table>
+            <thead><tr><th>Release</th><th class="num">Dev Var</th><th class="num">QA Var</th><th>Readout</th></tr></thead>
+            <tbody>
+              <tr class="clickable-row" data-detail-key="capacity"><td>MMv26.04.0 · July</td><td class="num">+13h</td><td class="num"><span class="validation-warning">-28h</span></td><td><span class="click-hint">QA constraint</span></td></tr>
+              <tr class="clickable-row" data-detail-key="capacity"><td>MMv26.05.0 · August</td><td class="num">+10h</td><td class="num"><span class="validation-ok">+46h</span></td><td>Within capacity</td></tr>
+              <tr class="clickable-row" data-detail-key="capacity"><td><strong>Q3 total</strong></td><td class="num"><span class="validation-ok">+23h</span></td><td class="num"><span class="validation-ok">+18h</span></td><td>Total capacity positive</td></tr>
+            </tbody>
+          </table>
+          <div class="bar-wrap">
+            <div class="bar-line"><span>July QA load</span><strong>535 ROM / 507 capacity</strong></div>
+            <div class="bar-bg"><div class="bar-fill amber" style="width:100%;"></div></div>
+          </div>
+        </article>
+        <article class="card">
+          <h2 class="section-title">3. Scope Guardrails</h2>
+          <table>
+            <thead><tr><th>Rule</th><th>Handling</th></tr></thead>
+            <tbody>
+              <tr><td>Target fixVersion</td><td>Committed baseline scope</td></tr>
+              <tr><td>Empty fixVersion</td><td>Not Included</td></tr>
+              <tr><td>Non-target fixVersion</td><td>Review Needed</td></tr>
+              <tr><td>Standalone Epic</td><td>Visible for PM review</td></tr>
+              <tr><td>No evidence</td><td>No RAID / DA proposal</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+
+      <section class="grid cols-2" style="margin-top:14px;">
+        <article class="card">
+          <h2 class="section-title">4. Initiative Coverage</h2>
+          <table>
+            <thead><tr><th>Initiative</th><th>Coverage</th><th>RAID / DA</th></tr></thead>
+            <tbody>
+              <tr class="clickable-row" data-detail-key="initiativePRM508"><td>PRM-508 · JWO / PicoAccess</td><td><span class="badge green">Strong</span></td><td>Ready</td></tr>
+              <tr class="clickable-row" data-detail-key="initiativePRM313"><td>PRM-313 · Coke Swipe</td><td><span class="badge green">Strong</span></td><td>Ready</td></tr>
+              <tr class="clickable-row" data-detail-key="initiativePRM160"><td>PRM-160 · GS1</td><td><span class="badge green">Strong</span></td><td>Ready</td></tr>
+              <tr class="clickable-row" data-detail-key="sourceGaps"><td>Other committed initiatives</td><td><span class="badge amber">Weak / gap</span></td><td>No entry without evidence</td></tr>
+            </tbody>
+          </table>
+        </article>
+        <article class="card">
+          <h2 class="section-title">5. Source Posture</h2>
+          <table>
+            <thead><tr><th>Source type</th><th>Status</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr class="clickable-row" data-detail-key="sources"><td>Jira comments / fields</td><td><span class="badge green">Strong</span></td><td>Primary evidence</td></tr>
+              <tr class="clickable-row" data-detail-key="sources"><td>Confluence PRD</td><td><span class="badge green">Strong</span></td><td>JWO boundary</td></tr>
+              <tr class="clickable-row" data-detail-key="sources"><td>Outlook + PM pasted evidence</td><td><span class="badge green">Strong</span></td><td>Roadmap notes</td></tr>
+              <tr class="clickable-row" data-detail-key="sourceGaps"><td>Teams / Loop / recordings</td><td><span class="badge amber">Unreadable</span></td><td>Not promoted</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+    </section>
+
+    <section id="signals" class="view">
+      <div class="phase-label">Signal view · accepted current-state RAID / DA</div>
+      <section class="hero">
+        <article class="card">
+          <h2 class="section-title">1. Current-State Delivery Story</h2>
+          <p class="release-story">The accepted signal set is concentrated in <strong>JWO / PicoAccess</strong>, <strong>Coke Swipe</strong>, and <strong>GS1</strong>. The strongest signals come from direct Jira comments, the JWO PRD, and the 5/28 Technology Roadmap notes.</p>
+          <div class="badge-row">
+            <span class="badge red clickable-badge" data-detail-key="risks">3 risks</span>
+            <span class="badge blue clickable-badge" data-detail-key="dependencies">6 dependencies</span>
+            <span class="badge purple clickable-badge" data-detail-key="decisions">4 decisions</span>
+            <span class="badge amber clickable-badge" data-detail-key="actions">5 actions</span>
+          </div>
+        </article>
+        <aside class="readout-box">
+          <div class="readout-title"><h2>Decision posture</h2><span class="badge blue">Source-backed</span></div>
+          <p class="readout-body">No RAID / DA entry was created for weak-coverage initiatives. That keeps the report honest: it shows where evidence exists and where the PM accepted gaps.</p>
+        </aside>
+      </section>
+
+      <section class="grid cols-4" style="margin-top:14px;">
+        <article class="card tight clickable-card" tabindex="0" data-detail-key="risks"><div class="metric-label">Risks</div><div class="metric-value">3</div><div class="metric-note"><span class="click-hint">Click for evidence</span></div></article>
+        <article class="card tight clickable-card" tabindex="0" data-detail-key="dependencies"><div class="metric-label">Dependencies</div><div class="metric-value">6</div><div class="metric-note"><span class="click-hint">Click for owners/source</span></div></article>
+        <article class="card tight clickable-card" tabindex="0" data-detail-key="decisions"><div class="metric-label">Decisions</div><div class="metric-value">4</div><div class="metric-note"><span class="click-hint">Click for boundary</span></div></article>
+        <article class="card tight clickable-card" tabindex="0" data-detail-key="actions"><div class="metric-label">Actions</div><div class="metric-value">5</div><div class="metric-note"><span class="click-hint">Click for follow-up</span></div></article>
+      </section>
+
+      <section class="grid cols-2" style="margin-top:14px;">
+        <article class="card">
+          <h2 class="section-title">2. Top Signals</h2>
+          <div class="signal-row clickable-signal" data-detail-key="initiativePRM508"><span class="badge red">Risk</span><span>JWO gate hardware / API interface unknowns created ROM uncertainty.</span><strong class="nowrap">PRM-508</strong></div>
+          <div class="signal-row clickable-signal" data-detail-key="initiativePRM313"><span class="badge blue">Dependency</span><span>Coke Swipe August target is assumption-based pending vendor discovery.</span><strong class="nowrap">PRM-313</strong></div>
+          <div class="signal-row clickable-signal" data-detail-key="initiativePRM160"><span class="badge blue">Dependency</span><span>GS1 depends on Castles firmware/library details and Kiosk pre-validation timing.</span><strong class="nowrap">PRM-160</strong></div>
+          <div class="signal-row clickable-signal" data-detail-key="sourceGaps"><span class="badge gray">Gap</span><span>Weak-coverage initiatives were reviewed but not promoted into RAID / DA.</span><strong class="nowrap">PM accepted</strong></div>
+        </article>
+        <article class="card">
+          <h2 class="section-title">3. Parent Finalization Gate</h2>
+          <p><strong>Parent date stamp remains blocked.</strong></p>
+          <p class="muted">Host this HTML artifact, get an iframe-ready link, embed it in Confluence, and confirm it renders. Only then update the parent Last updated date.</p>
+          <div class="badge-row">
+            <span class="badge green">Child source approved</span>
+            <span class="badge amber">Hosting pending</span>
+            <span class="badge amber">Iframe pending</span>
+            <span class="badge amber">Parent date blocked</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="card" style="margin-top:14px;">
+        <h2 class="section-title">4. Source Ledger</h2>
+        <div class="source-ledger">
+          This dashboard is a static, dependency-free HTML artifact generated from the validated child source page. The interactive drawer uses embedded data records. The next skill should generate those records from the source ledger and current Jira refresh.
+          <div class="source-ledger-grid">
+            <div class="ledger-item">Child page status<strong>Approved / validated</strong></div>
+            <div class="ledger-item">Committed epics<strong>16</strong></div>
+            <div class="ledger-item">Accepted RAID / DA<strong>19 entries</strong></div>
+            <div class="ledger-item">Parent status<strong>Iframe pending</strong></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <div class="iframe-note">Iframe note: this prototype is a static, dependency-free HTML page. It uses embedded JavaScript for tabs and drawers. If Confluence iframe policy blocks script execution, use the same layout as a static one-tab page or publish separate baseline and signal pages.</div>
+  </main>
+
+  <div class="detail-backdrop" id="detailBackdrop"></div>
+  <aside class="detail-drawer" id="detailDrawer" aria-hidden="true" aria-labelledby="drawerTitle" role="dialog">
+    <div class="drawer-header">
+      <div>
+        <h2 class="drawer-title" id="drawerTitle">Detail</h2>
+        <p class="drawer-subtitle" id="drawerSubtitle">Backing records for the selected rollup.</p>
+      </div>
+      <button class="drawer-close" id="drawerClose" type="button">Close</button>
+    </div>
+    <div class="drawer-meta" id="drawerMeta"></div>
+    <div class="drawer-table-wrap" id="drawerTableWrap"></div>
+  </aside>
+
+  <script>
+    const jiraBase = 'https://365retailmarkets.atlassian.net/browse/';
+    const confluenceBase = 'https://365retailmarkets.atlassian.net/wiki/spaces/PS/pages/';
+    const sourcePageUrl = confluenceBase + '6774751290/Mobile+Market+Q3+2026+Baseline+Source+Data';
+
+    const detailConfig = {
+      approvedEpics: {
+        title: 'Committed Baseline Epics',
+        rule: 'Target fixVersion MMv26.04.0 or MMv26.05.0. These are the committed baseline scope items.',
+        columns: [['jiraKey','Jira key'],['summary','Summary'],['parent','Parent initiative'],['fixVersion','fixVersion'],['devRom','Dev ROM'],['qaRom','QA ROM'],['status','Status']]
+      },
+      notIncluded: {
+        title: 'Not Included',
+        rule: 'Empty fixVersion at baseline. These are not committed Q3 scope unless later reviewed and approved.',
+        columns: [['jiraKey','Jira key'],['summary','Summary'],['parent','Parent initiative'],['status','Status'],['reason','Reason']]
+      },
+      reviewNeeded: {
+        title: 'Review Needed',
+        rule: 'Non-target fixVersion items. Current count is zero.',
+        columns: [['message','Message']]
+      },
+      standalone: {
+        title: 'Standalone Epic',
+        rule: 'Target fixVersion is present, but no parent Initiative is linked.',
+        columns: [['jiraKey','Jira key'],['summary','Summary'],['fixVersion','fixVersion'],['devRom','Dev ROM'],['qaRom','QA ROM'],['status','Status']]
+      },
+      capacity: {
+        title: 'Capacity Details',
+        rule: 'Epic ROM is used for Mobile Market / ART-scoped work. Parent Initiative ROM is treated as cross-team rollup.',
+        columns: [['release','Release'],['targetDate','Target date'],['devCapacity','Dev capacity'],['devRom','Dev ROM'],['devVariance','Dev variance'],['qaCapacity','QA capacity'],['qaRom','QA ROM'],['qaVariance','QA variance']]
+      },
+      initiativePRM508: {
+        title: 'PRM-508 · JWO / PicoAccess',
+        rule: 'Strong coverage. Direct Jira comments and Confluence PRD support RAID / DA promotion.',
+        columns: [['type','Type'],['entry','Entry'],['source','Source'],['evidenceStatus','Evidence status'],['jiraKey','Linked Jira']]
+      },
+      initiativePRM313: {
+        title: 'PRM-313 · Coke Swipe / Coke Code and Go',
+        rule: 'Strong coverage from 5/28 Technology Roadmap notes and committed baseline Epics.',
+        columns: [['type','Type'],['entry','Entry'],['source','Source'],['evidenceStatus','Evidence status'],['jiraKey','Linked Jira']]
+      },
+      initiativePRM160: {
+        title: 'PRM-160 · GS1 Datamatrix / Scan&Pay',
+        rule: 'Strong coverage from 5/28 Technology Roadmap notes and committed baseline Epic MM-88.',
+        columns: [['type','Type'],['entry','Entry'],['source','Source'],['evidenceStatus','Evidence status'],['jiraKey','Linked Jira']]
+      },
+      risks: {
+        title: 'Accepted Risks',
+        rule: 'Only source-backed risks are shown.',
+        columns: [['workItem','Work item'],['entry','Risk'],['source','Source'],['confidence','Confidence'],['jiraKey','Linked Jira']]
+      },
+      dependencies: {
+        title: 'Accepted Dependencies',
+        rule: 'Dependencies came from Jira comments, JWO PRD, and 5/28 Technology Roadmap notes.',
+        columns: [['workItem','Work item'],['entry','Dependency'],['source','Source'],['confidence','Confidence'],['jiraKey','Linked Jira']]
+      },
+      decisions: {
+        title: 'Accepted Decisions',
+        rule: 'Decision entries include scope boundary and governance-direction records.',
+        columns: [['workItem','Work item'],['entry','Decision'],['source','Source'],['confidence','Confidence'],['jiraKey','Linked Jira']]
+      },
+      actions: {
+        title: 'Accepted Actions',
+        rule: 'Action entries came from the 5/28 Technology Roadmap notes pasted by the PM.',
+        columns: [['workItem','Work item'],['entry','Action'],['source','Source'],['confidence','Confidence'],['jiraKey','Linked Jira']]
+      },
+      sources: {
+        title: 'Strong Sources',
+        rule: 'Readable or PM-pasted sources used as primary evidence.',
+        columns: [['sourceId','Source ID'],['title','Title'],['system','System'],['evidenceStatus','Evidence status'],['use','Use']]
+      },
+      sourceGaps: {
+        title: 'Documented Source Gaps',
+        rule: 'No RAID / DA entry was created from unreadable or weak sources unless the PM supplied evidence.',
+        columns: [['item','Item'],['reason','Reason'],['handling','Handling']]
+      }
+    };
+
+    const detailData = {
+      approvedEpics: [
+        {jiraKey:'MM-1452',summary:'JWO (PicoAccess) > Flow and UI/UX Changes',parent:'PRM-508',fixVersion:'MMv26.04.0',devRom:120,qaRom:106,status:'Intake Ready',jiraUrl:jiraBase+'MM-1452'},
+        {jiraKey:'MM-1250',summary:'Coke Swipe > Mobile Market > R3',parent:'PRM-313',fixVersion:'MMv26.05.0',devRom:80,qaRom:160,status:'Intake Ready',jiraUrl:jiraBase+'MM-1250'},
+        {jiraKey:'MM-1249',summary:'Coke Swipe > Mobile Market > R2',parent:'PRM-313',fixVersion:'MMv26.05.0',devRom:80,qaRom:160,status:'Intake Ready',jiraUrl:jiraBase+'MM-1249'},
+        {jiraKey:'MM-1183',summary:'MobileMarket/CV > Support Greek Translations',parent:'PRM-377',fixVersion:'MMv26.04.0',devRom:80,qaRom:50,status:'Intake Ready',jiraUrl:jiraBase+'MM-1183'},
+        {jiraKey:'MM-830',summary:'Coke Swipe > Mobile Market > R1',parent:'PRM-313',fixVersion:'MMv26.04.0',devRom:60,qaRom:42,status:'Intake Ready',jiraUrl:jiraBase+'MM-830'},
+        {jiraKey:'MM-829',summary:'Coke Swipe > Mobile Market > Proof of Concept and design',parent:'PRM-313',fixVersion:'MMv26.04.0',devRom:0,qaRom:0,status:'In Progress',jiraUrl:jiraBase+'MM-829'},
+        {jiraKey:'MM-300',summary:'MobileMarket > International Enablement of VisionLink',parent:'PRM-194',fixVersion:'MMv26.04.0',devRom:30,qaRom:200,status:'Intake Ready',jiraUrl:jiraBase+'MM-300'},
+        {jiraKey:'MM-88',summary:'MM > Enable GS1 Barcode Scans',parent:'PRM-160',fixVersion:'MMv26.05.0',devRom:120,qaRom:44,status:'Intake Ready',jiraUrl:jiraBase+'MM-88'},
+        {jiraKey:'MM-1308',summary:'Tokenization > S1U2 > MobileMarket',parent:'PRM-47',fixVersion:'MMv26.04.0',devRom:16,qaRom:40,status:'Intake Ready',jiraUrl:jiraBase+'MM-1308'},
+        {jiraKey:'MM-1043',summary:'MobileMarket > Device startup sync changes',parent:'Standalone',fixVersion:'MMv26.04.0',devRom:16,qaRom:8,status:'Intake Ready',jiraUrl:jiraBase+'MM-1043'},
+        {jiraKey:'MM-299',summary:'MobileMarket > Logic for temperature reporting',parent:'PRM-172',fixVersion:'MMv26.05.0',devRom:20,qaRom:12,status:'Intake Ready',jiraUrl:jiraBase+'MM-299'},
+        {jiraKey:'MM-220',summary:'PicoMarket 2.0 > LED Feature functionality',parent:'PRM-173',fixVersion:'MMv26.05.0',devRom:160,qaRom:70,status:'Intake Ready',jiraUrl:jiraBase+'MM-220'},
+        {jiraKey:'MM-23',summary:'PicoCoffee CA > Canada readiness validation',parent:'PRM-80',fixVersion:'MMv26.04.0',devRom:60,qaRom:30,status:'Ready For Dev',jiraUrl:jiraBase+'MM-23'},
+        {jiraKey:'MM-18',summary:'MobileMarket > UI-UX POS Method Room Charge',parent:'PRM-29',fixVersion:'MMv26.04.0',devRom:40,qaRom:24,status:'Ready For Dev',jiraUrl:jiraBase+'MM-18'},
+        {jiraKey:'MM-1312',summary:'Mobile Market KTLO for August - 26.05.0',parent:'PRM-167',fixVersion:'MMv26.05.0',devRom:50,qaRom:35,status:'Intake Ready',jiraUrl:jiraBase+'MM-1312'},
+        {jiraKey:'MM-1309',summary:'Mobile Market KTLO for July - 26.04.0',parent:'PRM-167',fixVersion:'MMv26.04.0',devRom:50,qaRom:35,status:'Intake Ready',jiraUrl:jiraBase+'MM-1309'}
+      ],
+      notIncluded: [
+        {jiraKey:'MM-1645',summary:'JWO Bad Debt/Restitution Flows Enablement',parent:'PRM-508',status:'ROM Estimate',reason:'Empty fixVersion',jiraUrl:jiraBase+'MM-1645'},
+        {jiraKey:'MM-1547',summary:'Coke Code and Go Solution Design',parent:'PRM-313',status:'High Level Design',reason:'Empty fixVersion',jiraUrl:jiraBase+'MM-1547'},
+        {jiraKey:'MM-1545',summary:'ADM Temperature Reporting Solution Design',parent:'PRM-172',status:'BACKLOG',reason:'Empty fixVersion',jiraUrl:jiraBase+'MM-1545'},
+        {jiraKey:'MM-1647',summary:'QBD/Pepsi PCV Validation',parent:'PRM-557',status:'ROM Estimate',reason:'Empty fixVersion',jiraUrl:jiraBase+'MM-1647'}
+      ],
+      reviewNeeded: [{message:'No Review Needed items. Non-target fixVersion count is 0.'}],
+      standalone: [{jiraKey:'MM-1043',summary:'MobileMarket > Device startup sync changes',fixVersion:'MMv26.04.0',devRom:16,qaRom:8,status:'Intake Ready',jiraUrl:jiraBase+'MM-1043'}],
+      capacity: [
+        {release:'MMv26.04.0 · July Release Candidate',targetDate:'2026-07-16',devCapacity:485,devRom:472,devVariance:'+13',qaCapacity:507,qaRom:535,qaVariance:'-28'},
+        {release:'MMv26.05.0 · August Release Candidate',targetDate:'2026-08-27',devCapacity:520,devRom:510,devVariance:'+10',qaCapacity:527,qaRom:481,qaVariance:'+46'},
+        {release:'Q3 total',targetDate:'-',devCapacity:1005,devRom:982,devVariance:'+23',qaCapacity:1034,qaRom:1016,qaVariance:'+18'}
+      ],
+      initiativePRM508: [
+        {type:'Assumption',entry:'MM work is UI/UX-focused; scope aligned and PRD available. Remaining alignment centers on Pico display and Amazon one-pager source of truth.',source:'5/28 Technology Roadmap Review + JWO PRD',evidenceStatus:'user_pasted_excerpt + direct_read',jiraKey:'MM-1452',jiraUrl:jiraBase+'MM-1452'},
+        {type:'Dependency',entry:'Mobile Market delivery depends on 365 API integration path rather than direct gate hardware interaction; Dev ROM reduced to 120h based on this assumption.',source:'Jira MM-1452 comment 1153762',evidenceStatus:'direct_read',jiraKey:'MM-1452',jiraUrl:jiraBase+'MM-1452'},
+        {type:'Risk',entry:'Gate hardware API/interface and JWO system API/interface unknowns created ROM and delivery uncertainty.',source:'Jira MM-1452 comment 1150255',evidenceStatus:'direct_read',jiraKey:'MM-1452',jiraUrl:jiraBase+'MM-1452'},
+        {type:'Decision',entry:'Amazon owns cameras, CV, gate hardware, cart generation, and store calibration; 365 owns catalog, payments, receipts, loyalty, reporting, and operator payout.',source:'JWO Engineering PRD',evidenceStatus:'direct_read',jiraKey:'PRM-508',jiraUrl:jiraBase+'PRM-508'}
+      ],
+      initiativePRM313: [
+        {type:'Dependency',entry:'August target remains assumption-based pending vendor discovery and integration planning.',source:'5/28 Technology Roadmap Review',evidenceStatus:'user_pasted_excerpt',jiraKey:'PRM-313',jiraUrl:jiraBase+'PRM-313'},
+        {type:'Action',entry:'Aakash to validate assumptions with Smita, Stephen, and Chad F. across data flow, source of truth, ADM handling, and vendor integration responsibilities.',source:'5/28 Technology Roadmap Review',evidenceStatus:'user_pasted_excerpt',jiraKey:'PRM-313',jiraUrl:jiraBase+'PRM-313'},
+        {type:'Action',entry:'Smita to set up the assumptions call and own the integration plan coming out of vendor discovery.',source:'5/28 Technology Roadmap Review',evidenceStatus:'user_pasted_excerpt',jiraKey:'PRM-313',jiraUrl:jiraBase+'PRM-313'}
+      ],
+      initiativePRM160: [
+        {type:'Dependency',entry:'GS1 delivery depends on Castles libraries / firmware update details and Kiosk pre-validation timing. Pico analysis exists; Kiosk assessment is still needed.',source:'5/28 Technology Roadmap Review',evidenceStatus:'user_pasted_excerpt',jiraKey:'MM-88',jiraUrl:jiraBase+'MM-88'},
+        {type:'Action',entry:'Stephen to send Michael the open Castles request details, including libraries / firmware update needed for testing.',source:'5/28 Technology Roadmap Review',evidenceStatus:'user_pasted_excerpt',jiraKey:'PRM-160',jiraUrl:jiraBase+'PRM-160'},
+        {type:'Action',entry:'Aakash to confirm when Kiosk testing / pre-validation can happen after the Castles dependency is clarified.',source:'5/28 Technology Roadmap Review',evidenceStatus:'user_pasted_excerpt',jiraKey:'PRM-160',jiraUrl:jiraBase+'PRM-160'},
+        {type:'Risk',entry:'If scanner or hardware limitations block support, GS1 may become a non-starter for Kiosk/Pico support.',source:'5/28 Technology Roadmap Review',evidenceStatus:'user_pasted_excerpt',jiraKey:'MM-88',jiraUrl:jiraBase+'MM-88'}
+      ],
+      risks: [
+        {workItem:'PRM-508 / MM-1452',entry:'Integration unknowns around gate hardware API/interface and JWO system API/interface created ROM and delivery uncertainty.',source:'Jira MM-1452 comment 1150255',confidence:'High',jiraKey:'MM-1452',jiraUrl:jiraBase+'MM-1452'},
+        {workItem:'PRM-160 / MM-88',entry:'If scanner or hardware limitations block support, GS1 may become a non-starter for Kiosk/Pico support.',source:'5/28 Technology Roadmap Review',confidence:'Medium-High',jiraKey:'MM-88',jiraUrl:jiraBase+'MM-88'},
+        {workItem:'July QA capacity',entry:'July QA is over capacity by 28 hours.',source:'Capacity snapshot',confidence:'High',jiraKey:'MMv26.04.0',jiraUrl:sourcePageUrl}
+      ],
+      dependencies: [
+        {workItem:'PRM-508 / MM-1452',entry:'Mobile Market delivery depends on the 365 API integration path rather than direct gate hardware interaction.',source:'Jira MM-1452 comment 1153762',confidence:'High',jiraKey:'MM-1452',jiraUrl:jiraBase+'MM-1452'},
+        {workItem:'PRM-508 / MM-1452',entry:'QA scope includes Pico testing, third-party hardware/software integration, and ADM testing.',source:'Jira MM-1452 comment 1150158',confidence:'High',jiraKey:'MM-1452',jiraUrl:jiraBase+'MM-1452'},
+        {workItem:'PRM-313',entry:'August target remains assumption-based pending vendor discovery and integration planning.',source:'5/28 Technology Roadmap Review',confidence:'High',jiraKey:'PRM-313',jiraUrl:jiraBase+'PRM-313'},
+        {workItem:'PRM-160',entry:'GS1 delivery depends on Castles libraries / firmware update details and Kiosk pre-validation timing.',source:'5/28 Technology Roadmap Review',confidence:'High',jiraKey:'PRM-160',jiraUrl:jiraBase+'PRM-160'},
+        {workItem:'PRM-376',entry:'ESL implementation start is not confirmed; vendor call needed to validate access points, API limitations, local vs cloud assumptions, and Kiosk/MM impact.',source:'5/28 Technology Roadmap Review',confidence:'Medium',jiraKey:'PRM-376',jiraUrl:jiraBase+'PRM-376'},
+        {workItem:'DIN-1248',entry:'Any limited-client release decision should route through the new release approval process.',source:'5/28 Technology Roadmap Review',confidence:'Medium',jiraKey:'DIN-1248',jiraUrl:jiraBase+'DIN-1248'}
+      ],
+      decisions: [
+        {workItem:'PRM-508',entry:'Amazon owns cameras, CV, gate hardware, cart generation, and store calibration; 365 owns catalog, payments, receipts, loyalty, reporting, and operator payout.',source:'JWO Engineering PRD',confidence:'High',jiraKey:'PRM-508',jiraUrl:jiraBase+'PRM-508'},
+        {workItem:'PRM-376',entry:'ESL remains in implementation readiness review; ROM should not be treated as full-project estimate because it is team-specific and date remains to be confirmed.',source:'5/28 Technology Roadmap Review',confidence:'Medium',jiraKey:'PRM-376',jiraUrl:jiraBase+'PRM-376'},
+        {workItem:'Release governance / Mobile Apps',entry:'MAPP June release should be treated as Mobile Apps release-candidate readiness, not single-project release handling.',source:'5/28 Technology Roadmap Review',confidence:'Medium',jiraKey:'MAPP',jiraUrl:sourcePageUrl},
+        {workItem:'Baseline lifecycle',entry:'Child page is approved / validated; parent Last updated remains blocked until iframe embed is confirmed.',source:'Workflow gate',confidence:'High',jiraKey:'Source page',jiraUrl:sourcePageUrl}
+      ],
+      actions: [
+        {workItem:'PRM-313',entry:'Aakash to validate assumptions with Smita, Stephen, and Chad F.',source:'5/28 Technology Roadmap Review',confidence:'High',jiraKey:'PRM-313',jiraUrl:jiraBase+'PRM-313'},
+        {workItem:'PRM-313',entry:'Smita to set up the assumptions call and own the integration plan coming out of vendor discovery.',source:'5/28 Technology Roadmap Review',confidence:'High',jiraKey:'PRM-313',jiraUrl:jiraBase+'PRM-313'},
+        {workItem:'PRM-160',entry:'Stephen to send Michael the open Castles request details.',source:'5/28 Technology Roadmap Review',confidence:'High',jiraKey:'PRM-160',jiraUrl:jiraBase+'PRM-160'},
+        {workItem:'PRM-160',entry:'Aakash to confirm when Kiosk testing / pre-validation can happen.',source:'5/28 Technology Roadmap Review',confidence:'High',jiraKey:'PRM-160',jiraUrl:jiraBase+'PRM-160'},
+        {workItem:'HTML dashboard handoff',entry:'Host HTML, obtain iframe-ready link, embed in Confluence, and confirm render before parent date stamp.',source:'Workflow gate',confidence:'High',jiraKey:'Parent page',jiraUrl:confluenceBase+'6776160257/Executive+Summary+Mobile+Market+Q3+2026+Plan_Draft+1'}
+      ],
+      sources: [
+        {sourceId:'S1',title:'Jira MM-1452 issue and comments',system:'Jira',evidenceStatus:'direct_read',use:'PRM-508 scope, assumptions, dependencies, ROM changes'},
+        {sourceId:'S2',title:'JWO Engineering PRD',system:'Confluence',evidenceStatus:'direct_read',use:'PRM-508 ownership boundary'},
+        {sourceId:'S4',title:'5/28 Technology Roadmap Review',system:'Outlook + PM paste',evidenceStatus:'direct_read_partial_body + user_pasted_excerpt',use:'PRM-508, PRM-313, PRM-160, PRM-376'},
+        {sourceId:'S6',title:'5/4 Markets/CV/Payments Spotlight',system:'Confluence',evidenceStatus:'direct_read',use:'Action-table source behavior tested'}
+      ],
+      sourceGaps: [
+        {item:'Teams chat / recap links',reason:'Connector could not open link or recording was too large.',handling:'Not promoted'},
+        {item:'Loop files',reason:'Resolved to .loop but content could not be extracted.',handling:'Not promoted unless PM pastes excerpt'},
+        {item:'PRD gaps',reason:'No clean standalone PRD found for all initiatives.',handling:'Accepted by PM; no PRD-based entries added'},
+        {item:'PRM-377 / PRM-194 / PRM-173 / PRM-80 / PRM-29 / PRM-167 / MM-1043',reason:'Jira baseline only; no current-state source evidence.',handling:'No RAID / DA proposed'}
+      ]
+    };
+
+    function renderCell(row, key) {
+      const value = row[key];
+      if (key === 'jiraKey' || key === 'linkedJira') {
+        const text = value || row.jiraKey || '';
+        const url = row.jiraUrl || (text && text.includes('-') ? jiraBase + text : sourcePageUrl);
+        return '<a class="jira-link" href="' + url + '" target="_blank" rel="noopener">' + escapeHtml(text) + '</a>';
+      }
+      if (value === null || value === undefined) return '—';
+      return escapeHtml(String(value));
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, function(ch) {
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]);
+      });
+    }
+
+    function openDrawer(key) {
+      const config = detailConfig[key];
+      const rows = detailData[key] || [];
+      if (!config) return;
+
+      document.getElementById('drawerTitle').textContent = config.title;
+      document.getElementById('drawerSubtitle').textContent = config.rule;
+
+      const meta = document.getElementById('drawerMeta');
+      meta.innerHTML = [
+        '<div class="drawer-meta-item">Record count<strong>' + rows.length + '</strong></div>',
+        '<div class="drawer-meta-item">Source page<strong><a class="jira-link" href="' + sourcePageUrl + '" target="_blank" rel="noopener">Validated child page</a></strong></div>',
+        '<div class="drawer-meta-item">Evidence rule<strong>No source, no RAID / DA</strong></div>'
+      ].join('');
+
+      const tableWrap = document.getElementById('drawerTableWrap');
+      const headers = config.columns.map(c => '<th>' + escapeHtml(c[1]) + '</th>').join('');
+      const body = rows.map(row => '<tr>' + config.columns.map(c => '<td>' + renderCell(row, c[0]) + '</td>').join('') + '</tr>').join('');
+      tableWrap.innerHTML = '<table><thead><tr>' + headers + '</tr></thead><tbody>' + body + '</tbody></table>';
+
+      document.getElementById('detailBackdrop').classList.add('active');
+      document.getElementById('detailDrawer').classList.add('active');
+      document.getElementById('detailDrawer').setAttribute('aria-hidden', 'false');
+    }
+
+    function closeDrawer() {
+      document.getElementById('detailBackdrop').classList.remove('active');
+      document.getElementById('detailDrawer').classList.remove('active');
+      document.getElementById('detailDrawer').setAttribute('aria-hidden', 'true');
+    }
+
+    document.querySelectorAll('[data-detail-key]').forEach(el => {
+      el.addEventListener('click', () => openDrawer(el.getAttribute('data-detail-key')));
+      el.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openDrawer(el.getAttribute('data-detail-key'));
+        }
+      });
+    });
+
+    document.querySelectorAll('.tab-button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.getAttribute('data-tab')).classList.add('active');
+      });
+    });
+
+    document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+    document.getElementById('detailBackdrop').addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeDrawer();
+    });
+  </script>
+</body>
+</html>
